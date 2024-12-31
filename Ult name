@@ -1,0 +1,53 @@
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+
+local playerGui = player:WaitForChild("PlayerGui")
+
+
+local function findGuiAndSetText()
+
+    local screenGui = playerGui:FindFirstChild("ScreenGui")
+
+    if screenGui then
+
+        local magicHealthFrame = screenGui:FindFirstChild("MagicHealth")
+
+        if magicHealthFrame then
+
+            local textLabel = magicHealthFrame:FindFirstChild("TextLabel")
+
+            if textLabel then
+
+                textLabel.Text = "THE STRONGEST OF HISTORY"
+                textLabel.FontFace = Font.new("Enum.Font.GothamSSm", Enum.FontWeight.Bold, Enum.FontStyle.Italic)
+textLabel.TextSize = 14
+textLabel.Position = UDim2.new(0.5, 2, -1.5, 0)
+
+local stroke = Instance.new("UIStroke")
+stroke.Parent = textLabel
+stroke.Thickness = 3 -- Thickness of the stroke
+
+local a = game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.MagicHealth.TextLabel.TextLabel
+a:Destroy()
+
+local pressme = game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.MagicHealth.Ult
+pressme.Text = "You're Dead"
+pressme.FontFace = Font.new("rbxassetid://16658246179")
+pressme.TextSize = 10
+
+local pressme2 = game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.MagicHealth.Ult.TextLabel
+pressme2.Text = "You're Dead"
+pressme2.FontFace = Font.new("rbxassetid://16658246179")
+pressme2.TextSize = 10
+
+            end
+
+        end
+
+    end
+
+end
+
+
+playerGui.DescendantAdded:Connect(findGuiAndSetText)
