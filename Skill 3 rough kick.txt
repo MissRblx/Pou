@@ -1,0 +1,99 @@
+local player = game.Players.LocalPlayer
+
+	local playerGui = player.PlayerGui
+
+	local function setmovesettexts(on)
+	
+
+
+		local playerGui = player.PlayerGui
+
+		local hotbar = playerGui:FindFirstChild("Hotbar")
+
+		local backpack = hotbar:FindFirstChild("Backpack")
+
+		local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+		local baseButton = hotbarFrame:FindFirstChild("3").Base
+
+		local ToolName = baseButton.ToolName
+
+
+		ToolName.Text = "Rough Kick"
+		
+		end
+	
+		
+local thing999 = game:GetService("RunService").RenderStepped:Connect(function()
+		setmovesettexts()
+	end)
+		
+--[[Kick]]
+local animationId = 10471336737
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://18181348446"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1)
+
+local url = "https://github.com/MissRblx/Sound/raw/refs/heads/main/downslam.mp3" -- example
+local fileName = "downslam.mp3"  -- You can name the file however you want
+
+-- Always check and download the file
+if not isfile(fileName) then
+    writefile(fileName, game:HttpGet(url))
+end
+
+-- Create a sound object and play it
+local sound = Instance.new("Sound")
+sound.SoundId = getcustomasset(fileName)  -- Load from custom asset
+sound.Volume = 5  -- Set volume to desired level
+sound.Looped = false  -- Set to false to prevent looping
+sound.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") -- Parent to PlayerGui or Workspace
+
+-- Play the sound
+sound:Play()
+
+end
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)

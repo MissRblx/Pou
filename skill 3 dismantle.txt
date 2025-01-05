@@ -1,0 +1,195 @@
+local player = game.Players.LocalPlayer
+
+	local playerGui = player.PlayerGui
+
+	local function setmovesettexts(on)
+	
+
+
+		local playerGui = player.PlayerGui
+
+		local hotbar = playerGui:FindFirstChild("Hotbar")
+
+		local backpack = hotbar:FindFirstChild("Backpack")
+
+		local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+		local baseButton = hotbarFrame:FindFirstChild("3").Base
+
+		local ToolName = baseButton.ToolName
+
+
+		ToolName.Text = "Dismantle"
+		
+		end
+	
+		
+local thing999 = game:GetService("RunService").RenderStepped:Connect(function()
+		setmovesettexts()
+	end)
+
+--[[dismantle]]
+local animationId = 10471336737
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://116753755471636"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0.4
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1.3)
+
+local url = "https://github.com/MissRblx/Pou/raw/refs/heads/main/dismantle%20voice%20%5B08E6674%5D%20%5Bvocals%5D.mp3" -- example
+local fileName = "dismantle%20voice%20%5B08E6674%5D%20%5Bvocals%5D.mp3"  -- You can name the file however you want
+
+-- Always check and download the file
+if not isfile(fileName) then
+    writefile(fileName, game:HttpGet(url))
+end
+
+-- Create a sound object and play it
+local sound = Instance.new("Sound")
+sound.SoundId = getcustomasset(fileName)  -- Load from custom asset
+sound.Volume = 5  -- Set volume to desired level
+sound.Looped = false  -- Set to false to prevent looping
+sound.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") -- Parent to PlayerGui or Workspace
+
+-- Play the sound
+sound:Play()
+
+wait(0.5)
+
+local assetId = 135651641727743
+local soundId = "rbxassetid://0" -- Sound ID (replace if needed)
+
+-- Load the dismantle (Folder)
+local dismantle = game:GetObjects("rbxassetid://" .. assetId)[1]
+
+-- Create and play sound
+local sound = Instance.new("Sound")
+sound.SoundId = soundId
+sound.Parent = game.Workspace
+sound:Play()
+
+-- Ensure the dismantle was loaded properly
+if dismantle then
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    
+    if character then
+        -- Wait for character parts to be loaded
+        local head = character:WaitForChild("Head")
+
+        if head then
+            -- Parent the dismantle to the character
+            dismantle.Parent = character
+            
+            -- Define the start and target CFrame
+            local startCFrame = head.CFrame * CFrame.new(0, 2.5, 0) -- Starting position relative to the head
+            local targetCFrame = head.CFrame * CFrame.new(0, 2.5, -200) -- Target position relative to the head
+            
+            -- Iterate through all parts in the folder and position them smoothly
+            local TweenService = game:GetService("TweenService")
+            local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out) -- Customize duration and easing style as needed
+
+            for _, part in pairs(dismantle:GetDescendants()) do
+                if part:IsA("BasePart") then
+                    -- Position the part relative to the head smoothly
+                    part.CanCollide = false -- Disable collision
+                    part.Anchored = true   -- Ensure parts are anchored
+                    part.CFrame = startCFrame -- Set initial position
+                    
+                    local goal = { CFrame = targetCFrame }
+                    local tween = TweenService:Create(part, tweenInfo, goal)
+                    tween:Play()
+                end
+            end
+        end
+    end
+end
+
+-- Function to disable certain effects (ParticleEmitters and Beams)
+local function disableEffects(model)
+    for _, obj in pairs(model:GetDescendants()) do
+        if obj:IsA("ParticleEmitter") or obj:IsA("Beam") then
+            obj.Enabled = false
+        end
+    end
+end
+
+-- Function to enable certain effects (ParticleEmitters and Beams)
+local function enableEffects(model)
+    for _, obj in pairs(model:GetDescendants()) do
+        if obj:IsA("ParticleEmitter") or obj:IsA("Beam") then
+            obj.Enabled = true
+        end
+    end
+end
+
+-- Destroy unnecessary objects
+local function destroyIfExist(path)
+    local obj = path
+    if obj then
+        obj:Destroy()
+    end
+end
+
+enableEffects(dismantle)
+
+destroyIfExist(game.Players.LocalPlayer.Character.Ungroup.Workspace)
+destroyIfExist(game.Players.LocalPlayer.Character.Ungroup.ServerScriptService)
+destroyIfExist(game.Players.LocalPlayer.Character.Ungroup.StarterPack)
+destroyIfExist(game.Players.LocalPlayer.Character.Ungroup.ReplicatedStorage.Remotes)
+destroyIfExist(game.Players.LocalPlayer.Character.Ungroup.ReplicatedStorage.Assets.Effects.Finisher)
+destroyIfExist(game.Players.LocalPlayer.Character.Ungroup.ReplicatedStorage.Assets.Effects.Cleave)
+
+wait(1)
+
+disableEffects(dismantle)
+
+wait(0.5)
+
+dismantle:Destroy()
+
+end
+
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
