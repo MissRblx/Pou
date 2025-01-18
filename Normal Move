@@ -1,0 +1,31 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local playerGui = player:WaitForChild("PlayerGui")
+local hotbar = playerGui:FindFirstChild("Hotbar")
+local backpack = hotbar:FindFirstChild("Backpack")
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local buttonData = {
+    {name = "1", text = "Cursed Flash", font = Enum.Font.SourceSans},
+    {name = "2", text = "Dismantle Barrage", font = Enum.Font.SourceSans},
+    {name = "3", text = "Curse Instinct", font = Enum.Font.SourceSans},
+    {name = "4", text = "Cursed Energy", font = Enum.Font.SourceSans},
+}
+
+for _, data in pairs(buttonData) do
+    local baseButton = hotbarFrame:FindFirstChild(data.name).Base
+    local ToolName = baseButton.ToolName
+    ToolName.Text = data.text
+    ToolName.Font = data.font
+end
+
+hotbarFrame:WaitForChild("1").Base.Reuse.Visible = true
+hotbarFrame["1"].Base.Reuse.Text = "VARIANTS"
+hotbarFrame["1"].Base.Reuse.Reuse.Text = "VARIANTS"
+
+hotbarFrame:WaitForChild("3").Base.Reuse.Visible = true
+hotbarFrame["3"].Base.Reuse.Text = "VARIANTS"
+hotbarFrame["3"].Base.Reuse.Reuse.Text = "VARIANTS"
