@@ -1,0 +1,23 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local playerGui = player:WaitForChild("PlayerGui")
+local hotbar = playerGui:FindFirstChild("Hotbar")
+local backpack = hotbar:FindFirstChild("Backpack")
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local buttonData = {
+    {name = "1", text = "Instant Counter", font = Enum.Font.SourceSans},
+    {name = "2", text = "Fuga(not finished)", font = Enum.Font.SourceSans},
+    {name = "3", text = "?", font = Enum.Font.SourceSans},
+    {name = "4", text = "?", font = Enum.Font.SourceSans},
+}
+
+for _, data in pairs(buttonData) do
+    local baseButton = hotbarFrame:FindFirstChild(data.name).Base
+    local ToolName = baseButton.ToolName
+    ToolName.Text = data.text
+    ToolName.Font = data.font
+end
