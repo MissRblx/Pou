@@ -277,6 +277,150 @@ if leftcursefisteffect then
     end
 end
 
+--pants
+
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local rightLeg = character:FindFirstChild("Right Leg")
+
+if rightLeg then
+    local rlegpart = Instance.new("Part")
+    rlegpart.Size = Vector3.new(1, 1, 1)  -- size
+    rlegpart.BrickColor = BrickColor.new("White")
+    rlegpart.CanCollide = false
+    rlegpart.Anchored = false
+    rlegpart.Parent = workspace
+
+    local weld = Instance.new("Weld")
+    weld.Part0 = rlegpart
+    weld.Part1 = rightLeg
+    weld.C0 = CFrame.new(0, -0.2, 0) * CFrame.Angles(math.rad(0), 0, 0)  -- position and rotate
+    weld.Parent = rlegpart
+
+    local rightpant = Instance.new("SpecialMesh", rlegpart)
+    rightpant.MeshId = "rbxassetid://140326582191138" -- correct model ID
+    rightpant.TextureId = "rbxassetid://136396109135360" -- correct texture ID
+    rightpant.Scale = Vector3.new(1, 1, 1)  -- scale
+end
+
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local leftLeg = character:FindFirstChild("Left Leg")
+
+if rightLeg then
+    local llegpart = Instance.new("Part")
+    llegpart.Size = Vector3.new(1, 1, 1)  -- size
+    llegpart.BrickColor = BrickColor.new("White")
+    llegpart.CanCollide = false
+    llegpart.Anchored = false
+    llegpart.Parent = workspace
+
+    local weld = Instance.new("Weld")
+    weld.Part0 = llegpart
+    weld.Part1 = leftLeg
+    weld.C0 = CFrame.new(0, -0.2, 0) * CFrame.Angles(math.rad(0), 0, 0)  -- position and rotate
+    weld.Parent = llegpart
+
+    local leftpant = Instance.new("SpecialMesh", llegpart)
+    leftpant.MeshId = "rbxassetid://99772406606118" -- correct model ID
+    leftpant.TextureId = "rbxassetid://136396109135360" -- correct texture ID
+    leftpant.Scale = Vector3.new(1, 1, 1)  -- scale
+end
+
+--shoe
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local rightLeg = character:FindFirstChild("Right Leg")
+
+if rightLeg then
+    local rshoepart = Instance.new("Part")
+    rshoepart.Size = Vector3.new(1, 1, 1)  -- size
+    rshoepart.BrickColor = BrickColor.new("White")
+    rshoepart.CanCollide = false
+    rshoepart.Anchored = false
+    rshoepart.Parent = workspace
+
+    local weld = Instance.new("Weld")
+    weld.Part0 = rshoepart
+    weld.Part1 = rightLeg
+    weld.C0 = CFrame.new(0, 0.82, 0) * CFrame.Angles(math.rad(0), 0, 0)  -- position and rotate
+    weld.Parent = rshoepart
+
+    local rightshoe = Instance.new("SpecialMesh", rshoepart)
+    rightshoe.MeshId = "rbxassetid://82550173435786" -- correct model ID
+    rightshoe.TextureId = "rbxassetid://110419609282269" -- correct texture ID
+    rightshoe.Scale = Vector3.new(1, 1, 1)  -- scale
+end
+
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local leftLeg = character:FindFirstChild("Left Leg")
+
+if rightLeg then
+    local lshoepart = Instance.new("Part")
+    lshoepart.Size = Vector3.new(1, 1, 1)  -- size
+    lshoepart.BrickColor = BrickColor.new("White")
+    lshoepart.CanCollide = false
+    lshoepart.Anchored = false
+    lshoepart.Parent = workspace
+
+    local weld = Instance.new("Weld")
+    weld.Part0 = lshoepart
+    weld.Part1 = leftLeg
+    weld.C0 = CFrame.new(0, 0.82, 0) * CFrame.Angles(math.rad(0), 0, 0)  -- position and rotate
+    weld.Parent = lshoepart
+
+    local leftshoe = Instance.new("SpecialMesh", lshoepart)
+    leftshoe.MeshId = "rbxassetid://97180261525026" -- correct model ID
+    leftshoe.TextureId = "rbxassetid://110419609282269" -- correct texture ID
+    leftshoe.Scale = Vector3.new(1, 1, 1)  -- scale
+end
+
+
+--sock
+
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local rightLeg = character:FindFirstChild("Right Leg")
+
+if rightLeg then
+    local rsockpart = Instance.new("Part")
+    rsockpart.Size = Vector3.new(1, 1, 1)  -- size
+    rsockpart.BrickColor = BrickColor.new("White")
+    rsockpart.CanCollide = false
+    rsockpart.Anchored = false
+    rsockpart.Parent = workspace
+
+    local weld = Instance.new("Weld")
+    weld.Part0 = rsockpart
+    weld.Part1 = rightLeg
+    weld.C0 = CFrame.new(0, 0.82, 0) * CFrame.Angles(math.rad(0), 0, 0)  -- position and rotate
+    weld.Parent = rsockpart
+
+    local rightsock = Instance.new("SpecialMesh", rsockpart)
+    rightsock.MeshId = "rbxassetid://91003102062407" -- correct model ID
+    rightsock.TextureId = "rbxassetid://84003403666103" -- correct texture ID
+    rightsock.Scale = Vector3.new(1, 1, 1)  -- scale
+end
+
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local leftLeg = character:FindFirstChild("Left Leg")
+
+if rightLeg then
+    local lsockpart = Instance.new("Part")
+    lsockpart.Size = Vector3.new(1, 1, 1)  -- size
+    lsockpart.BrickColor = BrickColor.new("White")
+    lsockpart.CanCollide = false
+    lsockpart.Anchored = false
+    lsockpart.Parent = workspace
+
+    local weld = Instance.new("Weld")
+    weld.Part0 = lsockpart
+    weld.Part1 = leftLeg
+    weld.C0 = CFrame.new(0, 0.82, 0) * CFrame.Angles(math.rad(0), 0, 0)  -- position and rotate
+    weld.Parent = lsockpart
+
+    local leftsock = Instance.new("SpecialMesh", lsockpart)
+    leftsock.MeshId = "rbxassetid://105522328293732" -- correct model ID
+    leftsock.TextureId = "rbxassetid://84003403666103" -- correct texture ID
+    leftsock.Scale = Vector3.new(1, 1, 1)  -- scale
+end
+
 local char = game.Players.LocalPlayer.Character
 
 pcall(function() char.Pants:Destroy() end)
