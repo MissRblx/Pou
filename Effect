@@ -1,0 +1,2550 @@
+        local Players = game:GetService("Players")
+        local RunService = game:GetService("RunService")
+
+        if not RunService:IsClient() then return end
+
+        local player = Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+local folderragingName = "Raging Dismantle"
+local folderraging
+
+if not game.ReplicatedStorage:FindFirstChild(folderragingName) then
+    folderraging = Instance.new("Folder")
+    folderraging.Name = folderragingName
+    folderraging.Parent = game.ReplicatedStorage
+else
+    folderraging = game.ReplicatedStorage:FindFirstChild(folderragingName)
+end
+
+local ragdisfectPart = Instance.new("Part")
+ragdisfectPart.Name = "Raging Dismantle"
+ragdisfectPart.Anchored = true
+ragdisfectPart.CanCollide = false
+ragdisfectPart.Transparency = 1
+ragdisfectPart.Size = Vector3.new(5, 5.2, 35)
+ragdisfectPart.Parent = folderraging
+
+
+        local forward = humanoidRootPart.CFrame.LookVector
+        local ragdisfectCFrame = CFrame.new(
+            humanoidRootPart.Position + (forward * 5),
+            humanoidRootPart.Position + (forward * 5) + forward
+        )
+        ragdisfectPart.CFrame = ragdisfectCFrame
+
+        local function createFolderPath(parent, path)
+            if not path or path == "" then return parent end
+            
+            local current = parent
+            for _, name in ipairs(string.split(path, ".")) do
+                local existing = current:FindFirstChild(name)
+                if not existing then
+                    local new = Instance.new("Attachment")
+                    new.Name = name
+                    new.Parent = current
+                    current = new
+                else
+                    current = existing
+                end
+            end
+            return current
+        end
+
+        local partiles = {}
+    
+            do
+                local ragdismantleparticle = Instance.new("ParticleEmitter")
+                local parent = ragdisfectPart
+                        ragdismantleparticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ragdismantleparticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                ragdismantleparticle.LightInfluence = 0
+                ragdismantleparticle.Lifetime = NumberRange.new(1.000000, 2.000000)
+                ragdismantleparticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                ragdismantleparticle.SpreadAngle = Vector2.new(15.000000, 15.000000)
+                ragdismantleparticle.LockedToPart = false
+                ragdismantleparticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.500000), NumberSequenceKeypoint.new(0.100000, 0.678885), NumberSequenceKeypoint.new(0.200000, 0.777102), NumberSequenceKeypoint.new(0.300000, 0.844337), NumberSequenceKeypoint.new(0.400000, 0.893441), NumberSequenceKeypoint.new(0.500000, 0.930057), NumberSequenceKeypoint.new(0.600000, 0.957237), NumberSequenceKeypoint.new(0.700000, 0.976824), NumberSequenceKeypoint.new(0.800000, 0.990003), NumberSequenceKeypoint.new(0.900000, 0.997559), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                ragdismantleparticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                ragdismantleparticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 1.000000, 1.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 1.000000, 1.000000))})
+                ragdismantleparticle.Drag = 4
+                ragdismantleparticle.FlipbookStartRandom = true
+                ragdismantleparticle.TimeScale = 1
+                ragdismantleparticle.VelocitySpread = 15
+                ragdismantleparticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ragdismantleparticle.Speed = NumberRange.new(44.962814, 119.900848)
+                ragdismantleparticle.Brightness = 0.20000000298023224
+                ragdismantleparticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 2.248140), NumberSequenceKeypoint.new(0.100000, 8.116346), NumberSequenceKeypoint.new(0.200000, 9.947443), NumberSequenceKeypoint.new(0.300000, 11.106650), NumberSequenceKeypoint.new(0.400000, 11.913888), NumberSequenceKeypoint.new(0.500000, 12.492812), NumberSequenceKeypoint.new(0.600000, 12.906523), NumberSequenceKeypoint.new(0.700000, 13.192095), NumberSequenceKeypoint.new(0.800000, 13.373295), NumberSequenceKeypoint.new(0.900000, 13.466647), NumberSequenceKeypoint.new(1.000000, 13.488842), NumberSequenceKeypoint.new(1.000000, 13.488842)})
+                ragdismantleparticle.Enabled = false
+                ragdismantleparticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ragdismantleparticle.RotSpeed = NumberRange.new(15.000000, 30.000000)
+                ragdismantleparticle.ZOffset = 1
+                ragdismantleparticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ragdismantleparticle.Rate = 25
+                ragdismantleparticle.VelocityInheritance = 0
+                ragdismantleparticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                ragdismantleparticle.ShapePartial = 1
+                ragdismantleparticle.Texture = "rbxassetid://16177865281"
+                ragdismantleparticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                ragdismantleparticle.EmissionDirection = Enum.NormalId.Front
+                ragdismantleparticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ragdismantleparticle.Shape = Enum.ParticleEmitterShape.Box
+                ragdismantleparticle.LightEmission = 1
+
+                ragdismantleparticle.Parent = parent
+                table.insert(partiles, ragdismantleparticle)
+            end
+        
+            do
+                local ragdismantleparticle = Instance.new("ParticleEmitter")
+                local parent = ragdisfectPart
+        
+                parent = createFolderPath(ragdisfectPart, "Attachment")
+                            ragdismantleparticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ragdismantleparticle.FlipbookFramerate = NumberRange.new(30.000000, 30.000000)
+                ragdismantleparticle.LightInfluence = 0
+                ragdismantleparticle.Lifetime = NumberRange.new(0.600000, 1.400000)
+                ragdismantleparticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                ragdismantleparticle.SpreadAngle = Vector2.new(1.000000, 1.000000)
+                ragdismantleparticle.LockedToPart = false
+                ragdismantleparticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.100000, 0.212669), NumberSequenceKeypoint.new(0.200000, 0.393933), NumberSequenceKeypoint.new(0.300000, 0.547191), NumberSequenceKeypoint.new(0.400000, 0.675120), NumberSequenceKeypoint.new(0.500000, 0.779833), NumberSequenceKeypoint.new(0.600000, 0.862977), NumberSequenceKeypoint.new(0.700000, 0.925794), NumberSequenceKeypoint.new(0.800000, 0.969144), NumberSequenceKeypoint.new(0.900000, 0.993537), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                ragdismantleparticle.Orientation = Enum.ParticleOrientation.VelocityPerpendicular
+                ragdismantleparticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 1.000000, 1.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 1.000000, 1.000000))})
+                ragdismantleparticle.Drag = 4.5
+                ragdismantleparticle.FlipbookStartRandom = false
+                ragdismantleparticle.TimeScale = 0.8500000238418579
+                ragdismantleparticle.VelocitySpread = 1
+                ragdismantleparticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ragdismantleparticle.Speed = NumberRange.new(26.000000, 100.000000)
+                ragdismantleparticle.Brightness = 0.125
+                ragdismantleparticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.100000, 7.875720), NumberSequenceKeypoint.new(0.200000, 10.389332), NumberSequenceKeypoint.new(0.300000, 12.008646), NumberSequenceKeypoint.new(0.400000, 13.158165), NumberSequenceKeypoint.new(0.500000, 14.001654), NumberSequenceKeypoint.new(0.600000, 14.622165), NumberSequenceKeypoint.new(0.700000, 15.067772), NumberSequenceKeypoint.new(0.800000, 15.367910), NumberSequenceKeypoint.new(0.900000, 15.539905), NumberSequenceKeypoint.new(1.000000, 15.591501), NumberSequenceKeypoint.new(1.000000, 15.591501)})
+                ragdismantleparticle.Enabled = false
+                ragdismantleparticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ragdismantleparticle.RotSpeed = NumberRange.new(40.000000, 165.000000)
+                ragdismantleparticle.ZOffset = 0.30000001192092896
+                ragdismantleparticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ragdismantleparticle.Rate = 25
+                ragdismantleparticle.VelocityInheritance = 0
+                ragdismantleparticle.Rotation = NumberRange.new(0.000000, 360.000000)
+                ragdismantleparticle.ShapePartial = 1
+                ragdismantleparticle.Texture = "rbxassetid://15269685466"
+                ragdismantleparticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                ragdismantleparticle.EmissionDirection = Enum.NormalId.Front
+                ragdismantleparticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ragdismantleparticle.Shape = Enum.ParticleEmitterShape.Box
+                ragdismantleparticle.LightEmission = 1
+
+                ragdismantleparticle.Parent = parent
+                table.insert(partiles, ragdismantleparticle)
+            end
+        
+            do
+                local ragdismantleparticle = Instance.new("ParticleEmitter")
+                local parent = ragdisfectPart
+                        ragdismantleparticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ragdismantleparticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                ragdismantleparticle.LightInfluence = 0
+                ragdismantleparticle.Lifetime = NumberRange.new(0.050000, 0.100000)
+                ragdismantleparticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                ragdismantleparticle.SpreadAngle = Vector2.new(1.000000, 1.000000)
+                ragdismantleparticle.LockedToPart = false
+                ragdismantleparticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ragdismantleparticle.Orientation = Enum.ParticleOrientation.VelocityParallel
+                ragdismantleparticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.000000, 0.000000, 0.000000))})
+                ragdismantleparticle.Drag = 0
+                ragdismantleparticle.FlipbookStartRandom = false
+                ragdismantleparticle.TimeScale = 1
+                ragdismantleparticle.VelocitySpread = 1
+                ragdismantleparticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 3.000000)})
+                ragdismantleparticle.Speed = NumberRange.new(93.959007, 93.959007)
+                ragdismantleparticle.Brightness = 15
+                ragdismantleparticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.057143, 1.332907), NumberSequenceKeypoint.new(0.247059, 3.212087), NumberSequenceKeypoint.new(0.603361, 3.955019), NumberSequenceKeypoint.new(1.000000, 4.151677)})
+                ragdismantleparticle.Enabled = false
+                ragdismantleparticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ragdismantleparticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ragdismantleparticle.ZOffset = 0
+                ragdismantleparticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ragdismantleparticle.Rate = 100
+                ragdismantleparticle.VelocityInheritance = 0
+                ragdismantleparticle.Rotation = NumberRange.new(90.000000, 90.000000)
+                ragdismantleparticle.ShapePartial = 1
+                ragdismantleparticle.Texture = "rbxassetid://17612135754"
+                ragdismantleparticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                ragdismantleparticle.EmissionDirection = Enum.NormalId.Front
+                ragdismantleparticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ragdismantleparticle.Shape = Enum.ParticleEmitterShape.Box
+                ragdismantleparticle.LightEmission = -15
+
+                ragdismantleparticle.Parent = parent
+                table.insert(partiles, ragdismantleparticle)
+            end
+        
+            do
+                local ragdismantleparticle = Instance.new("ParticleEmitter")
+                local parent = ragdisfectPart
+                        ragdismantleparticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ragdismantleparticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                ragdismantleparticle.LightInfluence = 0
+                ragdismantleparticle.Lifetime = NumberRange.new(0.100000, 0.200000)
+                ragdismantleparticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                ragdismantleparticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                ragdismantleparticle.LockedToPart = true
+                ragdismantleparticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ragdismantleparticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                ragdismantleparticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 1.000000, 1.000000)), ColorSequenceKeypoint.new(0.626298, Color3.new(1.000000, 0.047059, 0.047059)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 1.000000, 1.000000))})
+                ragdismantleparticle.Drag = 0
+                ragdismantleparticle.FlipbookStartRandom = false
+                ragdismantleparticle.TimeScale = 1
+                ragdismantleparticle.VelocitySpread = 0
+                ragdismantleparticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.288357, -3.000000), NumberSequenceKeypoint.new(0.698585, -0.204969), NumberSequenceKeypoint.new(1.000000, 3.000000)})
+                ragdismantleparticle.Speed = NumberRange.new(100.000000, 100.000000)
+                ragdismantleparticle.Brightness = 5
+                ragdismantleparticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.500780, 4.376820), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ragdismantleparticle.Enabled = false
+                ragdismantleparticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ragdismantleparticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ragdismantleparticle.ZOffset = 0
+                ragdismantleparticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ragdismantleparticle.Rate = 50
+                ragdismantleparticle.VelocityInheritance = 0
+                ragdismantleparticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                ragdismantleparticle.ShapePartial = 1
+                ragdismantleparticle.Texture = "rbxassetid://17061926066"
+                ragdismantleparticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                ragdismantleparticle.EmissionDirection = Enum.NormalId.Front
+                ragdismantleparticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ragdismantleparticle.Shape = Enum.ParticleEmitterShape.Box
+                ragdismantleparticle.LightEmission = 0
+
+                ragdismantleparticle.Parent = parent
+                table.insert(partiles, ragdismantleparticle)
+            end
+        
+            do
+                local ragdismantleparticle = Instance.new("ParticleEmitter")
+                local parent = ragdisfectPart
+                        ragdismantleparticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ragdismantleparticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                ragdismantleparticle.LightInfluence = 0
+                ragdismantleparticle.Lifetime = NumberRange.new(0.100000, 0.350000)
+                ragdismantleparticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                ragdismantleparticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                ragdismantleparticle.LockedToPart = false
+                ragdismantleparticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ragdismantleparticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                ragdismantleparticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 1.000000, 1.000000)), ColorSequenceKeypoint.new(0.626298, Color3.new(1.000000, 0.047059, 0.047059)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 1.000000, 1.000000))})
+                ragdismantleparticle.Drag = 10
+                ragdismantleparticle.FlipbookStartRandom = false
+                ragdismantleparticle.TimeScale = 1
+                ragdismantleparticle.VelocitySpread = 0
+                ragdismantleparticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.204236, -10.325540), NumberSequenceKeypoint.new(0.340236, 3.949563), NumberSequenceKeypoint.new(0.546236, -4.780409), NumberSequenceKeypoint.new(0.686236, 4.278421), NumberSequenceKeypoint.new(0.834236, -3.386844), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ragdismantleparticle.Speed = NumberRange.new(7.516720, 15.033441)
+                ragdismantleparticle.Brightness = 25
+                ragdismantleparticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.973139), NumberSequenceKeypoint.new(1.000000, 0.751672)})
+                ragdismantleparticle.Enabled = false
+                ragdismantleparticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ragdismantleparticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ragdismantleparticle.ZOffset = 0
+                ragdismantleparticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ragdismantleparticle.Rate = 19.989999771118164
+                ragdismantleparticle.VelocityInheritance = 0
+                ragdismantleparticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                ragdismantleparticle.ShapePartial = 1
+                ragdismantleparticle.Texture = "rbxassetid://17382457157"
+                ragdismantleparticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                ragdismantleparticle.EmissionDirection = Enum.NormalId.Front
+                ragdismantleparticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ragdismantleparticle.Shape = Enum.ParticleEmitterShape.Box
+                ragdismantleparticle.LightEmission = -5
+
+                ragdismantleparticle.Parent = parent
+                table.insert(partiles, ragdismantleparticle)
+            end
+        
+            do
+                local ragdismantleparticle = Instance.new("ParticleEmitter")
+                local parent = ragdisfectPart
+                        ragdismantleparticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ragdismantleparticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                ragdismantleparticle.LightInfluence = 0
+                ragdismantleparticle.Lifetime = NumberRange.new(0.150000, 0.150000)
+                ragdismantleparticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                ragdismantleparticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                ragdismantleparticle.LockedToPart = true
+                ragdismantleparticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ragdismantleparticle.Orientation = Enum.ParticleOrientation.VelocityParallel
+                ragdismantleparticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.996078, 0.996078, 0.996078)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.996078, 0.203922, 0.203922))})
+                ragdismantleparticle.Drag = 5
+                ragdismantleparticle.FlipbookStartRandom = false
+                ragdismantleparticle.TimeScale = 1
+                ragdismantleparticle.VelocitySpread = 0
+                ragdismantleparticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.350000), NumberSequenceKeypoint.new(0.203482, -0.412500), NumberSequenceKeypoint.new(0.784548, -1.987500), NumberSequenceKeypoint.new(1.000000, -2.989944)})
+                ragdismantleparticle.Speed = NumberRange.new(144.000000, 144.000000)
+                ragdismantleparticle.Brightness = 10
+                ragdismantleparticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.061120, 4.533790), NumberSequenceKeypoint.new(1.000000, 4.616893)})
+                ragdismantleparticle.Enabled = false
+                ragdismantleparticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ragdismantleparticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ragdismantleparticle.ZOffset = 0
+                ragdismantleparticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ragdismantleparticle.Rate = 100
+                ragdismantleparticle.VelocityInheritance = 0
+                ragdismantleparticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                ragdismantleparticle.ShapePartial = 1
+                ragdismantleparticle.Texture = "rbxassetid://17614951268"
+                ragdismantleparticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                ragdismantleparticle.EmissionDirection = Enum.NormalId.Front
+                ragdismantleparticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ragdismantleparticle.Shape = Enum.ParticleEmitterShape.Box
+                ragdismantleparticle.LightEmission = -5
+
+                ragdismantleparticle.Parent = parent
+                table.insert(partiles, ragdismantleparticle)
+            end
+        
+            do
+                local ragdismantleparticle = Instance.new("ParticleEmitter")
+                local parent = ragdisfectPart
+        
+                parent = createFolderPath(ragdisfectPart, "Attachment")
+                            ragdismantleparticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ragdismantleparticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                ragdismantleparticle.LightInfluence = 0.15000000596046448
+                ragdismantleparticle.Lifetime = NumberRange.new(0.200000, 0.400000)
+                ragdismantleparticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                ragdismantleparticle.SpreadAngle = Vector2.new(10.000000, 10.000000)
+                ragdismantleparticle.LockedToPart = false
+                ragdismantleparticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.084615, 0.737500), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                ragdismantleparticle.Orientation = Enum.ParticleOrientation.VelocityPerpendicular
+                ragdismantleparticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 1.000000, 1.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 1.000000, 1.000000))})
+                ragdismantleparticle.Drag = 0
+                ragdismantleparticle.FlipbookStartRandom = false
+                ragdismantleparticle.TimeScale = 0.8500000238418579
+                ragdismantleparticle.VelocitySpread = 10
+                ragdismantleparticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ragdismantleparticle.Speed = NumberRange.new(26.000000, 100.000000)
+                ragdismantleparticle.Brightness = 1
+                ragdismantleparticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.054487, 3.375055), NumberSequenceKeypoint.new(0.189103, 5.946536), NumberSequenceKeypoint.new(0.398077, 7.875106), NumberSequenceKeypoint.new(0.632692, 9.241217), NumberSequenceKeypoint.new(1.000000, 11.089479)})
+                ragdismantleparticle.Enabled = false
+                ragdismantleparticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ragdismantleparticle.RotSpeed = NumberRange.new(-100.000000, 100.000000)
+                ragdismantleparticle.ZOffset = 0
+                ragdismantleparticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ragdismantleparticle.Rate = 25
+                ragdismantleparticle.VelocityInheritance = 0
+                ragdismantleparticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                ragdismantleparticle.ShapePartial = 1
+                ragdismantleparticle.Texture = "rbxassetid://8904012224"
+                ragdismantleparticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                ragdismantleparticle.EmissionDirection = Enum.NormalId.Front
+                ragdismantleparticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ragdismantleparticle.Shape = Enum.ParticleEmitterShape.Box
+                ragdismantleparticle.LightEmission = 0
+
+                ragdismantleparticle.Parent = parent
+                table.insert(partiles, ragdismantleparticle)
+            end
+
+--
+--dismantle text
+
+        local distextPart = Instance.new("Part")
+        distextPart.Name = "Dismantle Text"
+        distextPart.Anchored = true
+        distextPart.CanCollide = false
+        distextPart.Transparency = 1
+        distextPart.Parent = folderraging
+
+        local forward = humanoidRootPart.CFrame.LookVector
+        local distextCFrame = CFrame.new(
+            humanoidRootPart.Position + (forward * 5),
+            humanoidRootPart.Position + (forward * 5) + forward
+        )
+        distextPart.CFrame = distextCFrame
+
+        local function createFolderPath(parent, path)
+            if not path or path == "" then return parent end
+            
+            local current = parent
+            for _, name in ipairs(string.split(path, ".")) do
+                local existing = current:FindFirstChild(name)
+                if not existing then
+                    local new = Instance.new("Attachment")
+                    new.Name = name
+                    new.Parent = current
+                    current = new
+                else
+                    current = existing
+                end
+            end
+            return current
+        end
+
+        local particles = {}
+    
+            do
+                local distextticle = Instance.new("ParticleEmitter")
+                local parent = distextPart
+                        distextticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                distextticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                distextticle.LightInfluence = 0
+                distextticle.Lifetime = NumberRange.new(1.000000, 1.000000)
+                distextticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                distextticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                distextticle.LockedToPart = true
+                distextticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.098504, 0.218750), NumberSequenceKeypoint.new(0.406723, 0.000000), NumberSequenceKeypoint.new(0.680798, 0.675000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                distextticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                distextticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 1.000000, 1.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 1.000000, 1.000000))})
+                distextticle.Drag = 8
+                distextticle.FlipbookStartRandom = false
+                distextticle.TimeScale = 1
+                distextticle.VelocitySpread = 0
+                distextticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                distextticle.Speed = NumberRange.new(1.000000, 1.000000)
+                distextticle.Brightness = 1
+                distextticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.500000), NumberSequenceKeypoint.new(1.000000, 1.500000)})
+                distextticle.Enabled = false
+                distextticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                distextticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                distextticle.ZOffset = 2
+                distextticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                distextticle.Rate = 1
+                distextticle.VelocityInheritance = 0
+                distextticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                distextticle.ShapePartial = 1
+                distextticle.Texture = "http://www.roblox.com/asset/?id=85731838632564"
+                distextticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                distextticle.EmissionDirection = Enum.NormalId.Right
+                distextticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                distextticle.Shape = Enum.ParticleEmitterShape.Box
+                distextticle.LightEmission = 0
+
+                distextticle.Parent = parent
+                table.insert(particles, distextticle)
+            end
+
+local foldercleaveName = "Cleave"
+local foldercleave
+
+if not game.ReplicatedStorage:FindFirstChild(foldercleaveName) then
+    foldercleave = Instance.new("Folder")
+    foldercleave.Name = foldercleaveName
+    foldercleave.Parent = game.ReplicatedStorage
+else
+    foldercleave = game.ReplicatedStorage:FindFirstChild(foldercleaveName)
+end
+
+        local clefectPart = Instance.new("Part")
+        clefectPart.Name = "Cleave"
+        clefectPart.Anchored = true
+        clefectPart.CanCollide = false
+        clefectPart.Transparency = 1
+        clefectPart.Parent = foldercleave
+
+        local forward = humanoidRootPart.CFrame.LookVector
+        local clefectCFrame = CFrame.new(
+            humanoidRootPart.Position + (forward * 5),
+            humanoidRootPart.Position + (forward * 5) + forward
+        )
+        clefectPart.CFrame = clefectCFrame
+
+        local function createFolderPath(parent, path)
+            if not path or path == "" then return parent end
+            
+            local current = parent
+            for _, name in ipairs(string.split(path, ".")) do
+                local existing = current:FindFirstChild(name)
+                if not existing then
+                    local new = Instance.new("Attachment")
+                    new.Name = name
+                    new.Parent = current
+                    current = new
+                else
+                    current = existing
+                end
+            end
+            return current
+        end
+
+        local particles = {}
+    
+            do
+                local cleaveticle = Instance.new("ParticleEmitter")
+                local parent = clefectPart
+        
+                parent = createFolderPath(clefectPart, "Attachment")
+                            cleaveticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cleaveticle.FlipbookFramerate = NumberRange.new(-35.000000, 16.000000)
+                cleaveticle.LightInfluence = 0
+                cleaveticle.Lifetime = NumberRange.new(0.250000, 0.250000)
+                cleaveticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                cleaveticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                cleaveticle.LockedToPart = true
+                cleaveticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cleaveticle.Orientation = Enum.ParticleOrientation.VelocityParallel
+                cleaveticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 1.000000, 1.000000)), ColorSequenceKeypoint.new(0.735294, Color3.new(0.025952, 0.025952, 0.025952)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.000000, 0.000000, 0.000000))})
+                cleaveticle.Drag = 5
+                cleaveticle.FlipbookStartRandom = false
+                cleaveticle.TimeScale = 1
+                cleaveticle.VelocitySpread = 360
+                cleaveticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.103330, 2.137500), NumberSequenceKeypoint.new(0.164179, 0.262500), NumberSequenceKeypoint.new(0.202067, 2.512500), NumberSequenceKeypoint.new(0.328358, 0.862500), NumberSequenceKeypoint.new(0.436082, 0.241706), NumberSequenceKeypoint.new(0.613088, 0.562500), NumberSequenceKeypoint.new(1.000000, 0.127962)})
+                cleaveticle.Speed = NumberRange.new(5.000000, 40.000000)
+                cleaveticle.Brightness = 12
+                cleaveticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.080672, 0.000000), NumberSequenceKeypoint.new(0.102521, 5.027323), NumberSequenceKeypoint.new(0.189916, 1.038252), NumberSequenceKeypoint.new(0.502521, 0.163935), NumberSequenceKeypoint.new(0.732773, 2.349727), NumberSequenceKeypoint.new(0.890756, 0.601093), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cleaveticle.Enabled = false
+                cleaveticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cleaveticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                cleaveticle.ZOffset = 0.699999988079071
+                cleaveticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.InAndOut
+                cleaveticle.Rate = 74
+                cleaveticle.VelocityInheritance = 0
+                cleaveticle.Rotation = NumberRange.new(-90.000000, 180.000000)
+                cleaveticle.ShapePartial = 1
+                cleaveticle.Texture = "http://www.roblox.com/asset/?id=15957056353"
+                cleaveticle.FlipbookMode = Enum.ParticleFlipbookMode.Random
+                cleaveticle.EmissionDirection = Enum.NormalId.Top
+                cleaveticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cleaveticle.Shape = Enum.ParticleEmitterShape.Box
+                cleaveticle.LightEmission = 0
+
+                cleaveticle.Parent = parent
+                table.insert(particles, cleaveticle)
+            end
+        
+            do
+                local cleaveticle = Instance.new("ParticleEmitter")
+                local parent = clefectPart
+                        cleaveticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cleaveticle.FlipbookFramerate = NumberRange.new(16.000000, 36.000000)
+                cleaveticle.LightInfluence = 0
+                cleaveticle.Lifetime = NumberRange.new(0.100000, 0.250000)
+                cleaveticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                cleaveticle.SpreadAngle = Vector2.new(-360.000000, 360.000000)
+                cleaveticle.LockedToPart = true
+                cleaveticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cleaveticle.Orientation = Enum.ParticleOrientation.VelocityParallel
+                cleaveticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.000000, 0.000000))})
+                cleaveticle.Drag = 65
+                cleaveticle.FlipbookStartRandom = true
+                cleaveticle.TimeScale = 1
+                cleaveticle.VelocitySpread = -360
+                cleaveticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 7.000000), NumberSequenceKeypoint.new(1.000000, 7.000000)})
+                cleaveticle.Speed = NumberRange.new(65.000000, 65.000000)
+                cleaveticle.Brightness = 15
+                cleaveticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.500000), NumberSequenceKeypoint.new(1.000000, 0.500000)})
+                cleaveticle.Enabled = false
+                cleaveticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cleaveticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                cleaveticle.ZOffset = -1.5
+                cleaveticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                cleaveticle.Rate = 85
+                cleaveticle.VelocityInheritance = 0
+                cleaveticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                cleaveticle.ShapePartial = 1
+                cleaveticle.Texture = "http://www.roblox.com/asset/?id=16465934491"
+                cleaveticle.FlipbookMode = Enum.ParticleFlipbookMode.Random
+                cleaveticle.EmissionDirection = Enum.NormalId.Top
+                cleaveticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cleaveticle.Shape = Enum.ParticleEmitterShape.Box
+                cleaveticle.LightEmission = -5
+
+                cleaveticle.Parent = parent
+                table.insert(particles, cleaveticle)
+            end
+        
+            do
+                local cleaveticle = Instance.new("ParticleEmitter")
+                local parent = clefectPart
+        
+                parent = createFolderPath(clefectPart, "Attachment")
+                            cleaveticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cleaveticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                cleaveticle.LightInfluence = 0
+                cleaveticle.Lifetime = NumberRange.new(0.070000, 0.250000)
+                cleaveticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                cleaveticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                cleaveticle.LockedToPart = true
+                cleaveticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.085714, 0.169399), NumberSequenceKeypoint.new(0.309244, 0.000000), NumberSequenceKeypoint.new(0.768067, 0.486339), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                cleaveticle.Orientation = Enum.ParticleOrientation.VelocityParallel
+                cleaveticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.109804, 0.109804)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.000000, 0.000000))})
+                cleaveticle.Drag = 0
+                cleaveticle.FlipbookStartRandom = false
+                cleaveticle.TimeScale = 1
+                cleaveticle.VelocitySpread = 360
+                cleaveticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                cleaveticle.Speed = NumberRange.new(1.000000, 1.000000)
+                cleaveticle.Brightness = 15
+                cleaveticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 2.606635), NumberSequenceKeypoint.new(0.319588, 0.426540), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cleaveticle.Enabled = false
+                cleaveticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cleaveticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                cleaveticle.ZOffset = 0
+                cleaveticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.InAndOut
+                cleaveticle.Rate = 125
+                cleaveticle.VelocityInheritance = 0
+                cleaveticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                cleaveticle.ShapePartial = 1
+                cleaveticle.Texture = "http://www.roblox.com/asset/?id=15958136936"
+                cleaveticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                cleaveticle.EmissionDirection = Enum.NormalId.Top
+                cleaveticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cleaveticle.Shape = Enum.ParticleEmitterShape.Box
+                cleaveticle.LightEmission = 0
+
+                cleaveticle.Parent = parent
+                table.insert(particles, cleaveticle)
+            end
+        
+            do
+                local cleaveticle = Instance.new("ParticleEmitter")
+                local parent = clefectPart
+        
+                parent = createFolderPath(clefectPart, "Attachment")
+                            cleaveticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cleaveticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                cleaveticle.LightInfluence = 0
+                cleaveticle.Lifetime = NumberRange.new(0.250000, 0.600000)
+                cleaveticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                cleaveticle.SpreadAngle = Vector2.new(360.000000, -360.000000)
+                cleaveticle.LockedToPart = false
+                cleaveticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cleaveticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                cleaveticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.898039, 0.525490, 1.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.898039, 0.525490, 1.000000))})
+                cleaveticle.Drag = 9
+                cleaveticle.FlipbookStartRandom = false
+                cleaveticle.TimeScale = 1
+                cleaveticle.VelocitySpread = 360
+                cleaveticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cleaveticle.Speed = NumberRange.new(10.000000, 30.000000)
+                cleaveticle.Brightness = 5
+                cleaveticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.055462, 2.131148), NumberSequenceKeypoint.new(0.105882, 0.000000), NumberSequenceKeypoint.new(0.267010, 0.426540), NumberSequenceKeypoint.new(0.279381, 2.464455), NumberSequenceKeypoint.new(0.361345, 0.000000), NumberSequenceKeypoint.new(0.415464, 0.094786), NumberSequenceKeypoint.new(0.449485, 0.853080), NumberSequenceKeypoint.new(0.485567, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cleaveticle.Enabled = false
+                cleaveticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cleaveticle.RotSpeed = NumberRange.new(400.000000, 800.000000)
+                cleaveticle.ZOffset = 1.149999976158142
+                cleaveticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                cleaveticle.Rate = 50
+                cleaveticle.VelocityInheritance = 0
+                cleaveticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                cleaveticle.ShapePartial = 1
+                cleaveticle.Texture = "http://www.roblox.com/asset/?id=15926256999"
+                cleaveticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                cleaveticle.EmissionDirection = Enum.NormalId.Top
+                cleaveticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cleaveticle.Shape = Enum.ParticleEmitterShape.Box
+                cleaveticle.LightEmission = 1
+
+                cleaveticle.Parent = parent
+                table.insert(particles, cleaveticle)
+            end
+        
+            do
+                local cleaveticle = Instance.new("ParticleEmitter")
+                local parent = clefectPart
+        
+                parent = createFolderPath(clefectPart, "Attachment")
+                            cleaveticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cleaveticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                cleaveticle.LightInfluence = 0.4000000059604645
+                cleaveticle.Lifetime = NumberRange.new(0.250000, 0.250000)
+                cleaveticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                cleaveticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                cleaveticle.LockedToPart = true
+                cleaveticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.090756, 0.142077), NumberSequenceKeypoint.new(0.240336, 0.000000), NumberSequenceKeypoint.new(0.499160, 0.000000), NumberSequenceKeypoint.new(0.667227, 0.327869), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                cleaveticle.Orientation = Enum.ParticleOrientation.VelocityParallel
+                cleaveticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.000000, 0.000000, 0.000000))})
+                cleaveticle.Drag = 0
+                cleaveticle.FlipbookStartRandom = false
+                cleaveticle.TimeScale = 1
+                cleaveticle.VelocitySpread = 360
+                cleaveticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.103330, 2.137500), NumberSequenceKeypoint.new(0.164179, 0.262500), NumberSequenceKeypoint.new(0.202067, 2.512500), NumberSequenceKeypoint.new(0.328358, 0.862500), NumberSequenceKeypoint.new(0.467279, 2.437500), NumberSequenceKeypoint.new(0.613088, 0.562500), NumberSequenceKeypoint.new(0.722158, 0.562500), NumberSequenceKeypoint.new(0.762342, 2.625000), NumberSequenceKeypoint.new(0.827784, 0.787500), NumberSequenceKeypoint.new(0.892078, 0.487500), NumberSequenceKeypoint.new(1.000000, 1.800000)})
+                cleaveticle.Speed = NumberRange.new(3.000000, 20.000000)
+                cleaveticle.Brightness = 1
+                cleaveticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.080672, 0.000000), NumberSequenceKeypoint.new(0.107563, 5.464481), NumberSequenceKeypoint.new(0.221849, 0.218580), NumberSequenceKeypoint.new(0.581513, 0.000000), NumberSequenceKeypoint.new(0.682353, 3.005465), NumberSequenceKeypoint.new(0.739496, 0.710383), NumberSequenceKeypoint.new(0.872269, 0.054645), NumberSequenceKeypoint.new(0.927731, 2.513661), NumberSequenceKeypoint.new(1.000000, 5.519125)})
+                cleaveticle.Enabled = false
+                cleaveticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cleaveticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                cleaveticle.ZOffset = 1
+                cleaveticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.InAndOut
+                cleaveticle.Rate = 30
+                cleaveticle.VelocityInheritance = 0
+                cleaveticle.Rotation = NumberRange.new(-90.000000, 180.000000)
+                cleaveticle.ShapePartial = 1
+                cleaveticle.Texture = "http://www.roblox.com/asset/?id=15957886143"
+                cleaveticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                cleaveticle.EmissionDirection = Enum.NormalId.Top
+                cleaveticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cleaveticle.Shape = Enum.ParticleEmitterShape.Box
+                cleaveticle.LightEmission = 0
+
+                cleaveticle.Parent = parent
+                table.insert(particles, cleaveticle)
+            end
+        
+            do
+                local cleaveticle = Instance.new("ParticleEmitter")
+                local parent = clefectPart
+                        cleaveticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cleaveticle.FlipbookFramerate = NumberRange.new(16.000000, 36.000000)
+                cleaveticle.LightInfluence = 0
+                cleaveticle.Lifetime = NumberRange.new(0.080000, 0.080000)
+                cleaveticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                cleaveticle.SpreadAngle = Vector2.new(360.000000, -360.000000)
+                cleaveticle.LockedToPart = true
+                cleaveticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.053782, 0.000000), NumberSequenceKeypoint.new(0.470588, 0.000000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                cleaveticle.Orientation = Enum.ParticleOrientation.VelocityParallel
+                cleaveticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.000000, 0.000000))})
+                cleaveticle.Drag = 12
+                cleaveticle.FlipbookStartRandom = false
+                cleaveticle.TimeScale = 1
+                cleaveticle.VelocitySpread = 360
+                cleaveticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.200000), NumberSequenceKeypoint.new(1.000000, 1.162500)})
+                cleaveticle.Speed = NumberRange.new(3.000000, 3.000000)
+                cleaveticle.Brightness = 55
+                cleaveticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 3.437500), NumberSequenceKeypoint.new(0.112371, 1.062500), NumberSequenceKeypoint.new(0.149485, 4.375000), NumberSequenceKeypoint.new(0.207217, 0.937500), NumberSequenceKeypoint.new(0.343299, 3.187500), NumberSequenceKeypoint.new(0.434021, 0.562500), NumberSequenceKeypoint.new(0.490722, 2.937500), NumberSequenceKeypoint.new(0.569072, 1.125000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cleaveticle.Enabled = false
+                cleaveticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cleaveticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                cleaveticle.ZOffset = 0.5
+                cleaveticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                cleaveticle.Rate = 65
+                cleaveticle.VelocityInheritance = 0
+                cleaveticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                cleaveticle.ShapePartial = 1
+                cleaveticle.Texture = "http://www.roblox.com/asset/?id=15956997146"
+                cleaveticle.FlipbookMode = Enum.ParticleFlipbookMode.Random
+                cleaveticle.EmissionDirection = Enum.NormalId.Top
+                cleaveticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cleaveticle.Shape = Enum.ParticleEmitterShape.Box
+                cleaveticle.LightEmission = -5
+
+                cleaveticle.Parent = parent
+                table.insert(particles, cleaveticle)
+            end
+
+
+--cleave text
+
+        local cletextPart = Instance.new("Part")
+        cletextPart.Name = "Text"
+        cletextPart.Anchored = true
+        cletextPart.CanCollide = false
+        cletextPart.Transparency = 1
+        cletextPart.Parent = foldercleave
+
+        local forward = humanoidRootPart.CFrame.LookVector
+        local cletextCFrame = CFrame.new(
+            humanoidRootPart.Position + (forward * 5),
+            humanoidRootPart.Position + (forward * 5) + forward
+        )
+        cletextPart.CFrame = cletextCFrame
+
+        local function createFolderPath(parent, path)
+            if not path or path == "" then return parent end
+            
+            local current = parent
+            for _, name in ipairs(string.split(path, ".")) do
+                local existing = current:FindFirstChild(name)
+                if not existing then
+                    local new = Instance.new("Folder")
+                    new.Name = name
+                    new.Parent = current
+                    current = new
+                else
+                    current = existing
+                end
+            end
+            return current
+        end
+
+        local particles = {}
+    
+            do
+                local cletextticle = Instance.new("ParticleEmitter")
+                local parent = cletextPart
+                        cletextticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cletextticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                cletextticle.LightInfluence = 0
+                cletextticle.Lifetime = NumberRange.new(1.000000, 1.000000)
+                cletextticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                cletextticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                cletextticle.LockedToPart = true
+                cletextticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.098504, 0.218750), NumberSequenceKeypoint.new(0.406723, 0.000000), NumberSequenceKeypoint.new(0.680798, 0.675000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                cletextticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                cletextticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 1.000000, 1.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 1.000000, 1.000000))})
+                cletextticle.Drag = 8
+                cletextticle.FlipbookStartRandom = false
+                cletextticle.TimeScale = 1
+                cletextticle.VelocitySpread = 0
+                cletextticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cletextticle.Speed = NumberRange.new(1.000000, 1.000000)
+                cletextticle.Brightness = 1
+                cletextticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.500000), NumberSequenceKeypoint.new(1.000000, 1.500000)})
+                cletextticle.Enabled = false
+                cletextticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cletextticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                cletextticle.ZOffset = 2
+                cletextticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                cletextticle.Rate = 1
+                cletextticle.VelocityInheritance = 0
+                cletextticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                cletextticle.ShapePartial = 1
+                cletextticle.Texture = "rbxassetid://75127446771447"
+                cletextticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                cletextticle.EmissionDirection = Enum.NormalId.Left
+                cletextticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cletextticle.Shape = Enum.ParticleEmitterShape.Box
+                cletextticle.LightEmission = 0
+
+                cletextticle.Parent = parent
+                table.insert(particles, cletextticle)
+            end
+
+
+
+local folderm1Name = "M1"
+local folderm1
+
+if not game.ReplicatedStorage:FindFirstChild(folderm1Name) then
+    folderm1 = Instance.new("Folder")
+    folderm1.Name = folderm1Name
+    folderm1.Parent = game.ReplicatedStorage
+else
+    folderm1last = game.ReplicatedStorage:FindFirstChild(folderm1Name)
+end
+
+        local mIlastfectPart = Instance.new("Part")
+        mIlastfectPart.Name = "LastHit"
+        mIlastfectPart.Anchored = true
+        mIlastfectPart.CanCollide = false
+        mIlastfectPart.Transparency = 1
+        mIlastfectPart.Size = Vector3.new(1, 1, 1)
+        mIlastfectPart.Parent = folderm1
+
+        local forward = humanoidRootPart.CFrame.LookVector
+
+        local mIlastfectCFrame = CFrame.new(
+
+            humanoidRootPart.Position + (forward * 5),
+
+            humanoidRootPart.Position + (forward * 5) + forward
+
+        )
+
+        mIlastfectPart.CFrame = mIlastfectCFrame
+
+
+
+        local function createFolderPath(parent, path)
+
+            if not path or path == "" then return parent end
+
+            
+
+            local current = parent
+
+            for _, name in ipairs(string.split(path, ".")) do
+
+                local existing = current:FindFirstChild(name)
+
+                if not existing then
+
+                    local new = Instance.new("Attachment")
+
+                    new.Name = name
+
+                    new.Parent = current
+
+                    current = new
+
+                else
+
+                    current = existing
+
+                end
+
+            end
+
+            return current
+
+        end
+
+
+
+        local particles = {}
+
+    
+
+            do
+
+                local mIlastfect = Instance.new("ParticleEmitter")
+
+                local parent = mIlastfectPart
+
+                        mIlastfect.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIlastfect.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.LightInfluence = 0
+                mIlastfect.Lifetime = NumberRange.new(0.750000, 0.750000)
+                mIlastfect.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                mIlastfect.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                mIlastfect.LockedToPart = false
+                mIlastfect.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.117476, 0.758065), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIlastfect.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIlastfect.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.129412, 0.129412, 0.129412)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.129412, 0.129412, 0.129412))})
+                mIlastfect.Drag = 5
+                mIlastfect.FlipbookStartRandom = false
+                mIlastfect.TimeScale = 1
+                mIlastfect.VelocitySpread = 360
+                mIlastfect.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Speed = NumberRange.new(0.100000, 0.100000)
+                mIlastfect.Brightness = 5
+                mIlastfect.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 2.000000), NumberSequenceKeypoint.new(0.100000, 7.627885), NumberSequenceKeypoint.new(0.200000, 9.199427), NumberSequenceKeypoint.new(0.300000, 10.150448), NumberSequenceKeypoint.new(0.400000, 10.791144), NumberSequenceKeypoint.new(0.500000, 11.238800), NumberSequenceKeypoint.new(0.600000, 11.552404), NumberSequenceKeypoint.new(0.700000, 11.766417), NumberSequenceKeypoint.new(0.800000, 11.902958), NumberSequenceKeypoint.new(0.900000, 11.977185), NumberSequenceKeypoint.new(1.000000, 12.000000)})
+                mIlastfect.Enabled = false
+                mIlastfect.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIlastfect.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ZOffset = 0
+                mIlastfect.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIlastfect.Rate = 5
+                mIlastfect.VelocityInheritance = 0
+                mIlastfect.Rotation = NumberRange.new(-360.000000, 360.000000)
+                mIlastfect.ShapePartial = 1
+                mIlastfect.Texture = "http://www.roblox.com/asset/?id=14622693043"
+                mIlastfect.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIlastfect.EmissionDirection = Enum.NormalId.Bottom
+                mIlastfect.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIlastfect.Shape = Enum.ParticleEmitterShape.Box
+                mIlastfect.LightEmission = 0
+
+
+                mIlastfect.Parent = parent
+
+                table.insert(particles, mIlastfect)
+
+            end
+
+        
+
+            do
+
+                local mIlastfect = Instance.new("ParticleEmitter")
+
+                local parent = mIlastfectPart
+
+                        mIlastfect.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIlastfect.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.LightInfluence = 0
+                mIlastfect.Lifetime = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                mIlastfect.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                mIlastfect.LockedToPart = false
+                mIlastfect.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.865591), NumberSequenceKeypoint.new(0.258158, 0.919355), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIlastfect.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIlastfect.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 1.000000, 1.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 1.000000, 1.000000))})
+                mIlastfect.Drag = 0
+                mIlastfect.FlipbookStartRandom = false
+                mIlastfect.TimeScale = 1
+                mIlastfect.VelocitySpread = 0
+                mIlastfect.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Speed = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.Brightness = 12
+                mIlastfect.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 15.000000), NumberSequenceKeypoint.new(1.000000, 15.000000)})
+                mIlastfect.Enabled = false
+                mIlastfect.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIlastfect.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ZOffset = 1
+                mIlastfect.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIlastfect.Rate = 5
+                mIlastfect.VelocityInheritance = 0
+                mIlastfect.Rotation = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ShapePartial = 1
+                mIlastfect.Texture = "http://www.roblox.com/asset/?id=14836778836"
+                mIlastfect.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                mIlastfect.EmissionDirection = Enum.NormalId.Top
+                mIlastfect.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIlastfect.Shape = Enum.ParticleEmitterShape.Box
+                mIlastfect.LightEmission = 1
+
+
+                mIlastfect.Parent = parent
+
+                table.insert(particles, mIlastfect)
+
+            end
+
+        
+
+            do
+
+                local mIlastfect = Instance.new("ParticleEmitter")
+
+                local parent = mIlastfectPart
+
+                        mIlastfect.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIlastfect.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.LightInfluence = 0
+                mIlastfect.Lifetime = NumberRange.new(0.550000, 0.550000)
+                mIlastfect.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                mIlastfect.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                mIlastfect.LockedToPart = false
+                mIlastfect.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIlastfect.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.000000, 0.000000))})
+                mIlastfect.Drag = 0
+                mIlastfect.FlipbookStartRandom = false
+                mIlastfect.TimeScale = 1
+                mIlastfect.VelocitySpread = 0
+                mIlastfect.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Speed = NumberRange.new(0.020000, 0.020000)
+                mIlastfect.Brightness = 0
+                mIlastfect.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 2.000000), NumberSequenceKeypoint.new(0.100000, 5.939519), NumberSequenceKeypoint.new(0.200000, 7.039598), NumberSequenceKeypoint.new(0.300000, 7.705314), NumberSequenceKeypoint.new(0.400000, 8.153801), NumberSequenceKeypoint.new(0.500000, 8.467160), NumberSequenceKeypoint.new(0.600000, 8.686683), NumberSequenceKeypoint.new(0.700000, 8.836492), NumberSequenceKeypoint.new(0.800000, 8.932071), NumberSequenceKeypoint.new(0.900000, 8.984030), NumberSequenceKeypoint.new(1.000000, 9.000000)})
+                mIlastfect.Enabled = false
+                mIlastfect.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIlastfect.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ZOffset = -1
+                mIlastfect.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIlastfect.Rate = 20
+                mIlastfect.VelocityInheritance = 0
+                mIlastfect.Rotation = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ShapePartial = 1
+                mIlastfect.Texture = "http://www.roblox.com/asset/?id=14620189087"
+                mIlastfect.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIlastfect.EmissionDirection = Enum.NormalId.Top
+                mIlastfect.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIlastfect.Shape = Enum.ParticleEmitterShape.Box
+                mIlastfect.LightEmission = 0
+
+
+                mIlastfect.Parent = parent
+
+                table.insert(particles, mIlastfect)
+
+            end
+
+        
+
+            do
+
+                local mIlastfect = Instance.new("ParticleEmitter")
+
+                local parent = mIlastfectPart
+
+                        mIlastfect.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIlastfect.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.LightInfluence = 0
+                mIlastfect.Lifetime = NumberRange.new(0.565000, 0.565000)
+                mIlastfect.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                mIlastfect.SpreadAngle = Vector2.new(5.000000, -5.000000)
+                mIlastfect.LockedToPart = false
+                mIlastfect.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.216995, 0.000000), NumberSequenceKeypoint.new(0.724583, 0.418750), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIlastfect.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIlastfect.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.000000, 0.031373)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.023529, 0.023529, 0.023529))})
+                mIlastfect.Drag = 0
+                mIlastfect.FlipbookStartRandom = false
+                mIlastfect.TimeScale = 0.8999999761581421
+                mIlastfect.VelocitySpread = 5
+                mIlastfect.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Speed = NumberRange.new(0.010000, 0.010000)
+                mIlastfect.Brightness = 12
+                mIlastfect.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 10.000000), NumberSequenceKeypoint.new(0.251546, 8.250000), NumberSequenceKeypoint.new(0.473196, 4.687500), NumberSequenceKeypoint.new(0.605155, 3.000000), NumberSequenceKeypoint.new(0.767010, 1.562500), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Enabled = false
+                mIlastfect.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIlastfect.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ZOffset = 1.25
+                mIlastfect.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIlastfect.Rate = 5
+                mIlastfect.VelocityInheritance = 0
+                mIlastfect.Rotation = NumberRange.new(-90.000000, 90.000000)
+                mIlastfect.ShapePartial = 1
+                mIlastfect.Texture = "http://www.roblox.com/asset/?id=14622697144"
+                mIlastfect.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIlastfect.EmissionDirection = Enum.NormalId.Top
+                mIlastfect.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIlastfect.Shape = Enum.ParticleEmitterShape.Box
+                mIlastfect.LightEmission = -2
+
+
+                mIlastfect.Parent = parent
+
+                table.insert(particles, mIlastfect)
+
+            end
+
+        
+
+            do
+
+                local mIlastfect = Instance.new("ParticleEmitter")
+
+                local parent = mIlastfectPart
+
+                        mIlastfect.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIlastfect.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.LightInfluence = 0
+                mIlastfect.Lifetime = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                mIlastfect.SpreadAngle = Vector2.new(5.000000, -5.000000)
+                mIlastfect.LockedToPart = false
+                mIlastfect.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.109500, 0.518750), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIlastfect.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIlastfect.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.196078, 0.000000, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.023529, 0.023529, 0.023529))})
+                mIlastfect.Drag = 0
+                mIlastfect.FlipbookStartRandom = false
+                mIlastfect.TimeScale = 1
+                mIlastfect.VelocitySpread = 5
+                mIlastfect.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Speed = NumberRange.new(0.010000, 0.010000)
+                mIlastfect.Brightness = 12
+                mIlastfect.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.100000, 3.547305), NumberSequenceKeypoint.new(0.200000, 4.323789), NumberSequenceKeypoint.new(0.300000, 4.720934), NumberSequenceKeypoint.new(0.400000, 4.960261), NumberSequenceKeypoint.new(0.500000, 5.127481), NumberSequenceKeypoint.new(0.600000, 5.267300), NumberSequenceKeypoint.new(0.700000, 5.407333), NumberSequenceKeypoint.new(0.800000, 5.566783), NumberSequenceKeypoint.new(0.900000, 5.760309), NumberSequenceKeypoint.new(1.000000, 6.000000)})
+                mIlastfect.Enabled = false
+                mIlastfect.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIlastfect.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ZOffset = 1.25
+                mIlastfect.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIlastfect.Rate = 5
+                mIlastfect.VelocityInheritance = 0
+                mIlastfect.Rotation = NumberRange.new(-90.000000, 90.000000)
+                mIlastfect.ShapePartial = 1
+                mIlastfect.Texture = "http://www.roblox.com/asset/?id=14885282236"
+                mIlastfect.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIlastfect.EmissionDirection = Enum.NormalId.Top
+                mIlastfect.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIlastfect.Shape = Enum.ParticleEmitterShape.Box
+                mIlastfect.LightEmission = -2
+
+
+                mIlastfect.Parent = parent
+
+                table.insert(particles, mIlastfect)
+
+            end
+
+        
+
+            do
+
+                local mIlastfect = Instance.new("ParticleEmitter")
+
+                local parent = mIlastfectPart
+
+                        mIlastfect.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIlastfect.FlipbookFramerate = NumberRange.new(25.000000, 25.000000)
+                mIlastfect.LightInfluence = 0
+                mIlastfect.Lifetime = NumberRange.new(0.550000, 1.000000)
+                mIlastfect.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                mIlastfect.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                mIlastfect.LockedToPart = false
+                mIlastfect.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIlastfect.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.000000, 0.000000))})
+                mIlastfect.Drag = 12
+                mIlastfect.FlipbookStartRandom = false
+                mIlastfect.TimeScale = 1
+                mIlastfect.VelocitySpread = 360
+                mIlastfect.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Speed = NumberRange.new(31.000000, 65.000000)
+                mIlastfect.Brightness = 7
+                mIlastfect.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 2.000000), NumberSequenceKeypoint.new(0.100000, 0.874423), NumberSequenceKeypoint.new(0.200000, 0.560115), NumberSequenceKeypoint.new(0.300000, 0.369910), NumberSequenceKeypoint.new(0.400000, 0.241771), NumberSequenceKeypoint.new(0.500000, 0.152240), NumberSequenceKeypoint.new(0.600000, 0.089519), NumberSequenceKeypoint.new(0.700000, 0.046717), NumberSequenceKeypoint.new(0.800000, 0.019408), NumberSequenceKeypoint.new(0.900000, 0.004563), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Enabled = false
+                mIlastfect.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIlastfect.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ZOffset = 2
+                mIlastfect.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIlastfect.Rate = 35
+                mIlastfect.VelocityInheritance = 0.5
+                mIlastfect.Rotation = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ShapePartial = 1
+                mIlastfect.Texture = "http://www.roblox.com/asset/?id=14647331432"
+                mIlastfect.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                mIlastfect.EmissionDirection = Enum.NormalId.Top
+                mIlastfect.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIlastfect.Shape = Enum.ParticleEmitterShape.Disc
+                mIlastfect.LightEmission = 1
+
+
+                mIlastfect.Parent = parent
+
+                table.insert(particles, mIlastfect)
+
+            end
+
+        
+
+            do
+
+                local mIlastfect = Instance.new("ParticleEmitter")
+
+                local parent = mIlastfectPart
+
+                        mIlastfect.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIlastfect.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.LightInfluence = 0
+                mIlastfect.Lifetime = NumberRange.new(0.450000, 0.755000)
+                mIlastfect.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid2x2
+                mIlastfect.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                mIlastfect.LockedToPart = false
+                mIlastfect.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.205221, 0.000000), NumberSequenceKeypoint.new(0.706309, 0.000000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIlastfect.Orientation = Enum.ParticleOrientation.VelocityParallel
+                mIlastfect.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.000000, 0.000000))})
+                mIlastfect.Drag = 10
+                mIlastfect.FlipbookStartRandom = false
+                mIlastfect.TimeScale = 1
+                mIlastfect.VelocitySpread = 360
+                mIlastfect.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 2.000000), NumberSequenceKeypoint.new(1.000000, -0.526066)})
+                mIlastfect.Speed = NumberRange.new(28.000000, 60.000000)
+                mIlastfect.Brightness = 3
+                mIlastfect.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.060825, 0.600000), NumberSequenceKeypoint.new(0.231959, 0.300000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Enabled = false
+                mIlastfect.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIlastfect.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ZOffset = -1
+                mIlastfect.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIlastfect.Rate = 25
+                mIlastfect.VelocityInheritance = 0
+                mIlastfect.Rotation = NumberRange.new(-90.000000, -90.000000)
+                mIlastfect.ShapePartial = 1
+                mIlastfect.Texture = "http://www.roblox.com/asset/?id=13010672136"
+                mIlastfect.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIlastfect.EmissionDirection = Enum.NormalId.Top
+                mIlastfect.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIlastfect.Shape = Enum.ParticleEmitterShape.Box
+                mIlastfect.LightEmission = 0
+
+
+                mIlastfect.Parent = parent
+
+                table.insert(particles, mIlastfect)
+
+            end
+
+        
+
+            do
+
+                local mIlastfect = Instance.new("ParticleEmitter")
+
+                local parent = mIlastfectPart
+
+                        mIlastfect.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIlastfect.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.LightInfluence = 0
+                mIlastfect.Lifetime = NumberRange.new(0.350000, 0.700000)
+                mIlastfect.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                mIlastfect.SpreadAngle = Vector2.new(45.000000, 45.000000)
+                mIlastfect.LockedToPart = false
+                mIlastfect.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.124370, 0.000000), NumberSequenceKeypoint.new(0.704202, 0.000000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIlastfect.Orientation = Enum.ParticleOrientation.VelocityPerpendicular
+                mIlastfect.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.000000, 0.031373)), ColorSequenceKeypoint.new(0.486159, Color3.new(0.980392, 0.035948, 0.065577)), ColorSequenceKeypoint.new(0.617647, Color3.new(0.647059, 0.647059, 0.647059)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.023529, 0.023529, 0.023529))})
+                mIlastfect.Drag = 0
+                mIlastfect.FlipbookStartRandom = false
+                mIlastfect.TimeScale = 0.75
+                mIlastfect.VelocitySpread = 45
+                mIlastfect.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Speed = NumberRange.new(0.003441, 0.003441)
+                mIlastfect.Brightness = 12
+                mIlastfect.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, -5.000000), NumberSequenceKeypoint.new(0.083333, 2.202770), NumberSequenceKeypoint.new(0.166667, 4.127775), NumberSequenceKeypoint.new(0.250000, 5.278429), NumberSequenceKeypoint.new(0.333333, 6.057515), NumberSequenceKeypoint.new(0.416667, 6.615259), NumberSequenceKeypoint.new(0.500000, 7.026058), NumberSequenceKeypoint.new(0.583333, 7.332650), NumberSequenceKeypoint.new(0.666667, 7.561988), NumberSequenceKeypoint.new(0.750000, 7.732203), NumberSequenceKeypoint.new(0.833333, 7.856088), NumberSequenceKeypoint.new(0.916667, 7.943003), NumberSequenceKeypoint.new(1.000000, 8.000000)})
+                mIlastfect.Enabled = false
+                mIlastfect.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIlastfect.RotSpeed = NumberRange.new(-250.000000, 250.000000)
+                mIlastfect.ZOffset = 0
+                mIlastfect.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIlastfect.Rate = 15
+                mIlastfect.VelocityInheritance = 0
+                mIlastfect.Rotation = NumberRange.new(-360.000000, 360.000000)
+                mIlastfect.ShapePartial = 1
+                mIlastfect.Texture = "http://www.roblox.com/asset/?id=15854637756"
+                mIlastfect.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                mIlastfect.EmissionDirection = Enum.NormalId.Front
+                mIlastfect.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIlastfect.Shape = Enum.ParticleEmitterShape.Box
+                mIlastfect.LightEmission = 0
+
+
+                mIlastfect.Parent = parent
+
+                table.insert(particles, mIlastfect)
+
+            end
+
+        
+
+            do
+
+                local mIlastfect = Instance.new("ParticleEmitter")
+
+                local parent = mIlastfectPart
+
+                        mIlastfect.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIlastfect.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.LightInfluence = 0
+                mIlastfect.Lifetime = NumberRange.new(0.450000, 1.000000)
+                mIlastfect.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                mIlastfect.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                mIlastfect.LockedToPart = false
+                mIlastfect.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.034755, 0.931250), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIlastfect.Orientation = Enum.ParticleOrientation.VelocityPerpendicular
+                mIlastfect.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.000000, 0.000000, 0.000000))})
+                mIlastfect.Drag = 5
+                mIlastfect.FlipbookStartRandom = false
+                mIlastfect.TimeScale = 0.8999999761581421
+                mIlastfect.VelocitySpread = 360
+                mIlastfect.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Speed = NumberRange.new(0.010000, 0.010000)
+                mIlastfect.Brightness = 5
+                mIlastfect.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 2.000000), NumberSequenceKeypoint.new(0.100000, 7.918694), NumberSequenceKeypoint.new(0.200000, 9.445962), NumberSequenceKeypoint.new(0.300000, 10.340835), NumberSequenceKeypoint.new(0.400000, 10.929683), NumberSequenceKeypoint.new(0.500000, 11.333405), NumberSequenceKeypoint.new(0.600000, 11.611760), NumberSequenceKeypoint.new(0.700000, 11.799104), NumberSequenceKeypoint.new(0.800000, 11.917174), NumberSequenceKeypoint.new(0.900000, 11.980663), NumberSequenceKeypoint.new(1.000000, 12.000000)})
+                mIlastfect.Enabled = false
+                mIlastfect.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIlastfect.RotSpeed = NumberRange.new(-100.000000, 355.000000)
+                mIlastfect.ZOffset = 0
+                mIlastfect.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIlastfect.Rate = 20
+                mIlastfect.VelocityInheritance = 0
+                mIlastfect.Rotation = NumberRange.new(-360.000000, 360.000000)
+                mIlastfect.ShapePartial = 1
+                mIlastfect.Texture = "http://www.roblox.com/asset/?id=7136539160"
+                mIlastfect.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                mIlastfect.EmissionDirection = Enum.NormalId.Top
+                mIlastfect.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIlastfect.Shape = Enum.ParticleEmitterShape.Box
+                mIlastfect.LightEmission = 0
+
+
+                mIlastfect.Parent = parent
+
+                table.insert(particles, mIlastfect)
+
+            end
+
+        
+
+            do
+
+                local mIlastfect = Instance.new("ParticleEmitter")
+
+                local parent = mIlastfectPart
+
+                        mIlastfect.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIlastfect.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIlastfect.LightInfluence = 0
+                mIlastfect.Lifetime = NumberRange.new(0.560000, 0.560000)
+                mIlastfect.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                mIlastfect.SpreadAngle = Vector2.new(5.000000, -5.000000)
+                mIlastfect.LockedToPart = false
+                mIlastfect.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.216995, 0.000000), NumberSequenceKeypoint.new(0.724583, 0.418750), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIlastfect.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIlastfect.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.000000, 0.031373)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.000000, 0.000000, 0.000000))})
+                mIlastfect.Drag = 0
+                mIlastfect.FlipbookStartRandom = false
+                mIlastfect.TimeScale = 0.8999999761581421
+                mIlastfect.VelocitySpread = 5
+                mIlastfect.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIlastfect.Speed = NumberRange.new(0.010000, 0.010000)
+                mIlastfect.Brightness = 8
+                mIlastfect.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.100000, 2.088741), NumberSequenceKeypoint.new(0.200000, 2.405014), NumberSequenceKeypoint.new(0.300000, 2.596233), NumberSequenceKeypoint.new(0.400000, 2.724128), NumberSequenceKeypoint.new(0.500000, 2.812918), NumberSequenceKeypoint.new(0.600000, 2.875399), NumberSequenceKeypoint.new(0.700000, 2.919658), NumberSequenceKeypoint.new(0.800000, 2.951650), NumberSequenceKeypoint.new(0.900000, 2.976564), NumberSequenceKeypoint.new(1.000000, 3.000000), NumberSequenceKeypoint.new(1.000000, 3.000000)})
+                mIlastfect.Enabled = false
+                mIlastfect.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIlastfect.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ZOffset = 1.350000023841858
+                mIlastfect.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIlastfect.Rate = 5
+                mIlastfect.VelocityInheritance = 0
+                mIlastfect.Rotation = NumberRange.new(0.000000, 0.000000)
+                mIlastfect.ShapePartial = 1
+                mIlastfect.Texture = "rbxassetid://17367633106"
+                mIlastfect.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIlastfect.EmissionDirection = Enum.NormalId.Top
+                mIlastfect.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIlastfect.Shape = Enum.ParticleEmitterShape.Box
+                mIlastfect.LightEmission = -1
+
+
+                mIlastfect.Parent = parent
+
+                table.insert(particles, mIlastfect)
+
+            end
+
+
+
+--m1
+
+        local mIPart = Instance.new("Part")
+        mIPart.Anchored = true
+        mIPart.CanCollide = false
+        mIPart.Transparency = 1
+        mIPart.Size = Vector3.new(0.1, 0.1, 0.1)
+        mIPart.Parent = folderm1
+
+        local forward = humanoidRootPart.CFrame.LookVector
+        local mICFrame = CFrame.new(
+            humanoidRootPart.Position + (forward * 5),
+            humanoidRootPart.Position + (forward * 5) + forward
+        )
+        mIPart.CFrame = mICFrame
+
+        local function createFolderPath(parent, path)
+            if not path or path == "" then return parent end
+            
+            local current = parent
+            for _, name in ipairs(string.split(path, ".")) do
+                local existing = current:FindFirstChild(name)
+                if not existing then
+                    local new = Instance.new("Attachment")
+                    new.Name = name
+                    new.Parent = current
+                    current = new
+                else
+                    current = existing
+                end
+            end
+            return current
+        end
+
+        local particles = {}
+    
+            do
+                local mIticle = Instance.new("ParticleEmitter")
+                local parent = mIPart
+                        mIticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIticle.LightInfluence = 0
+                mIticle.Lifetime = NumberRange.new(0.350000, 0.350000)
+                mIticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                mIticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                mIticle.LockedToPart = false
+                mIticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.098160, 0.312500), NumberSequenceKeypoint.new(0.265337, 0.012500), NumberSequenceKeypoint.new(0.427386, 0.155224), NumberSequenceKeypoint.new(0.757953, 0.916418), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.129412, 0.129412, 0.129412)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.129412, 0.129412, 0.129412))})
+                mIticle.Drag = 5
+                mIticle.FlipbookStartRandom = false
+                mIticle.TimeScale = 1
+                mIticle.VelocitySpread = 360
+                mIticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Speed = NumberRange.new(0.100000, 0.100000)
+                mIticle.Brightness = 5
+                mIticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 5.000000), NumberSequenceKeypoint.new(1.000000, 5.000000)})
+                mIticle.Enabled = false
+                mIticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIticle.ZOffset = 0
+                mIticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIticle.Rate = 5
+                mIticle.VelocityInheritance = 0
+                mIticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                mIticle.ShapePartial = 1
+                mIticle.Texture = "http://www.roblox.com/asset/?id=14622693043"
+                mIticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIticle.EmissionDirection = Enum.NormalId.Bottom
+                mIticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIticle.Shape = Enum.ParticleEmitterShape.Box
+                mIticle.LightEmission = 0
+
+                mIticle.Parent = parent
+                table.insert(particles, mIticle)
+            end
+        
+            do
+                local mIticle = Instance.new("ParticleEmitter")
+                local parent = mIPart
+                        mIticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIticle.LightInfluence = 0
+                mIticle.Lifetime = NumberRange.new(0.400000, 0.400000)
+                mIticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                mIticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                mIticle.LockedToPart = false
+                mIticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.865591), NumberSequenceKeypoint.new(0.258158, 0.919355), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 1.000000, 1.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 1.000000, 1.000000))})
+                mIticle.Drag = 0
+                mIticle.FlipbookStartRandom = false
+                mIticle.TimeScale = 1
+                mIticle.VelocitySpread = 0
+                mIticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Speed = NumberRange.new(0.000000, 0.000000)
+                mIticle.Brightness = 12
+                mIticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 5.000000), NumberSequenceKeypoint.new(1.000000, 5.000000)})
+                mIticle.Enabled = false
+                mIticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIticle.ZOffset = 1
+                mIticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIticle.Rate = 5
+                mIticle.VelocityInheritance = 0
+                mIticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                mIticle.ShapePartial = 1
+                mIticle.Texture = "http://www.roblox.com/asset/?id=10635226086"
+                mIticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                mIticle.EmissionDirection = Enum.NormalId.Top
+                mIticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIticle.Shape = Enum.ParticleEmitterShape.Box
+                mIticle.LightEmission = 1
+
+                mIticle.Parent = parent
+                table.insert(particles, mIticle)
+            end
+        
+            do
+                local mIticle = Instance.new("ParticleEmitter")
+                local parent = mIPart
+                        mIticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIticle.LightInfluence = 0
+                mIticle.Lifetime = NumberRange.new(0.450000, 0.450000)
+                mIticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                mIticle.SpreadAngle = Vector2.new(5.000000, -5.000000)
+                mIticle.LockedToPart = false
+                mIticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.216995, 0.000000), NumberSequenceKeypoint.new(0.724583, 0.418750), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.933333, 0.019608, 0.078431)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.000000, 0.000000, 0.000000))})
+                mIticle.Drag = 0
+                mIticle.FlipbookStartRandom = false
+                mIticle.TimeScale = 1
+                mIticle.VelocitySpread = 5
+                mIticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Speed = NumberRange.new(0.010000, 0.010000)
+                mIticle.Brightness = 12
+                mIticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 5.000000), NumberSequenceKeypoint.new(1.000000, 5.000000)})
+                mIticle.Enabled = false
+                mIticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIticle.ZOffset = 1.25
+                mIticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIticle.Rate = 5
+                mIticle.VelocityInheritance = 0
+                mIticle.Rotation = NumberRange.new(-90.000000, 90.000000)
+                mIticle.ShapePartial = 1
+                mIticle.Texture = "http://www.roblox.com/asset/?id=14622697144"
+                mIticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIticle.EmissionDirection = Enum.NormalId.Top
+                mIticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIticle.Shape = Enum.ParticleEmitterShape.Box
+                mIticle.LightEmission = 0
+
+                mIticle.Parent = parent
+                table.insert(particles, mIticle)
+            end
+        
+            do
+                local mIticle = Instance.new("ParticleEmitter")
+                local parent = mIPart
+                        mIticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIticle.LightInfluence = 0
+                mIticle.Lifetime = NumberRange.new(0.500000, 0.500000)
+                mIticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                mIticle.SpreadAngle = Vector2.new(5.000000, -5.000000)
+                mIticle.LockedToPart = false
+                mIticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.364706, 0.687500), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                mIticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.196078, 0.000000, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.023529, 0.023529, 0.023529))})
+                mIticle.Drag = 0
+                mIticle.FlipbookStartRandom = false
+                mIticle.TimeScale = 1
+                mIticle.VelocitySpread = 5
+                mIticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Speed = NumberRange.new(0.010000, 0.010000)
+                mIticle.Brightness = 25
+                mIticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 5.000000), NumberSequenceKeypoint.new(1.000000, 5.000000)})
+                mIticle.Enabled = false
+                mIticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIticle.ZOffset = 0
+                mIticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIticle.Rate = 5
+                mIticle.VelocityInheritance = 0
+                mIticle.Rotation = NumberRange.new(-90.000000, 90.000000)
+                mIticle.ShapePartial = 1
+                mIticle.Texture = "http://www.roblox.com/asset/?id=14836356869"
+                mIticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIticle.EmissionDirection = Enum.NormalId.Top
+                mIticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIticle.Shape = Enum.ParticleEmitterShape.Box
+                mIticle.LightEmission = -1
+
+                mIticle.Parent = parent
+                table.insert(particles, mIticle)
+            end
+        
+            do
+                local mIticle = Instance.new("ParticleEmitter")
+                local parent = mIPart
+                        mIticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIticle.LightInfluence = 0
+                mIticle.Lifetime = NumberRange.new(0.350000, 0.500000)
+                mIticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid2x2
+                mIticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                mIticle.LockedToPart = false
+                mIticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Orientation = Enum.ParticleOrientation.VelocityParallel
+                mIticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.062745, 0.062745)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.062745, 0.062745))})
+                mIticle.Drag = 10
+                mIticle.FlipbookStartRandom = false
+                mIticle.TimeScale = 1
+                mIticle.VelocitySpread = 360
+                mIticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 2.000000), NumberSequenceKeypoint.new(1.000000, -0.526066)})
+                mIticle.Speed = NumberRange.new(35.000000, 75.000000)
+                mIticle.Brightness = 4
+                mIticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.437500), NumberSequenceKeypoint.new(0.488307, 0.187500), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Enabled = false
+                mIticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIticle.ZOffset = 0
+                mIticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIticle.Rate = 15
+                mIticle.VelocityInheritance = 0
+                mIticle.Rotation = NumberRange.new(-90.000000, -90.000000)
+                mIticle.ShapePartial = 1
+                mIticle.Texture = "http://www.roblox.com/asset/?id=13010672136"
+                mIticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIticle.EmissionDirection = Enum.NormalId.Top
+                mIticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIticle.Shape = Enum.ParticleEmitterShape.Box
+                mIticle.LightEmission = 0
+
+                mIticle.Parent = parent
+                table.insert(particles, mIticle)
+            end
+        
+            do
+                local mIticle = Instance.new("ParticleEmitter")
+                local parent = mIPart
+                        mIticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                mIticle.LightInfluence = 0
+                mIticle.Lifetime = NumberRange.new(0.550000, 0.550000)
+                mIticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                mIticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                mIticle.LockedToPart = false
+                mIticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.529412, 0.129412, 0.137255)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.529412, 0.129412, 0.137255))})
+                mIticle.Drag = 0
+                mIticle.FlipbookStartRandom = false
+                mIticle.TimeScale = 1
+                mIticle.VelocitySpread = 360
+                mIticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Speed = NumberRange.new(0.020000, 0.020000)
+                mIticle.Brightness = 15
+                mIticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.100000, 2.956087), NumberSequenceKeypoint.new(0.200000, 3.603158), NumberSequenceKeypoint.new(0.300000, 3.934112), NumberSequenceKeypoint.new(0.400000, 4.133551), NumberSequenceKeypoint.new(0.500000, 4.272901), NumberSequenceKeypoint.new(0.600000, 4.389416), NumberSequenceKeypoint.new(0.700000, 4.506111), NumberSequenceKeypoint.new(0.800000, 4.638986), NumberSequenceKeypoint.new(0.900000, 4.800258), NumberSequenceKeypoint.new(1.000000, 5.000000)})
+                mIticle.Enabled = false
+                mIticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIticle.ZOffset = -1
+                mIticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIticle.Rate = 20
+                mIticle.VelocityInheritance = 0
+                mIticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                mIticle.ShapePartial = 1
+                mIticle.Texture = "http://www.roblox.com/asset/?id=14620189087"
+                mIticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                mIticle.EmissionDirection = Enum.NormalId.Top
+                mIticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIticle.Shape = Enum.ParticleEmitterShape.Box
+                mIticle.LightEmission = -5
+
+                mIticle.Parent = parent
+                table.insert(particles, mIticle)
+            end
+        
+            do
+                local mIticle = Instance.new("ParticleEmitter")
+                local parent = mIPart
+                        mIticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                mIticle.FlipbookFramerate = NumberRange.new(25.000000, 25.000000)
+                mIticle.LightInfluence = 0
+                mIticle.Lifetime = NumberRange.new(0.450000, 0.750000)
+                mIticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                mIticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                mIticle.LockedToPart = false
+                mIticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                mIticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.000000, 0.000000))})
+                mIticle.Drag = 12
+                mIticle.FlipbookStartRandom = false
+                mIticle.TimeScale = 1
+                mIticle.VelocitySpread = 360
+                mIticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Speed = NumberRange.new(31.000000, 65.000000)
+                mIticle.Brightness = 5
+                mIticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 2.000000), NumberSequenceKeypoint.new(0.100000, 0.874423), NumberSequenceKeypoint.new(0.200000, 0.560115), NumberSequenceKeypoint.new(0.300000, 0.369910), NumberSequenceKeypoint.new(0.400000, 0.241771), NumberSequenceKeypoint.new(0.500000, 0.152240), NumberSequenceKeypoint.new(0.600000, 0.089519), NumberSequenceKeypoint.new(0.700000, 0.046717), NumberSequenceKeypoint.new(0.800000, 0.019408), NumberSequenceKeypoint.new(0.900000, 0.004563), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                mIticle.Enabled = false
+                mIticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                mIticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                mIticle.ZOffset = 2
+                mIticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                mIticle.Rate = 35
+                mIticle.VelocityInheritance = 0.5
+                mIticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                mIticle.ShapePartial = 1
+                mIticle.Texture = "http://www.roblox.com/asset/?id=14647331432"
+                mIticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                mIticle.EmissionDirection = Enum.NormalId.Top
+                mIticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                mIticle.Shape = Enum.ParticleEmitterShape.Disc
+                mIticle.LightEmission = 1
+
+                mIticle.Parent = parent
+                table.insert(particles, mIticle)
+            end
+
+--cursedenergysummon
+
+local foldercursedenergyName = "Cursed Energy Omaga"
+local foldercursedenergy
+
+if not game.ReplicatedStorage:FindFirstChild(foldercursedenergyName) then
+    foldercursedenergy = Instance.new("Folder")
+    foldercursedenergy.Name = foldercursedenergyName
+    foldercursedenergy.Parent = game.ReplicatedStorage
+else
+    foldercursedenergy = game.ReplicatedStorage:FindFirstChild(foldercursedenergyName)
+end
+
+local cespawnPart = Instance.new("Part")
+cespawnPart.Name = "Summon"
+cespawnPart.Anchored = true
+cespawnPart.CanCollide = false
+cespawnPart.Transparency = 1
+cespawnPart.Size = Vector3.new(1, 1, 1)
+cespawnPart.Parent = foldercursedenergy
+
+
+
+        local forward = humanoidRootPart.CFrame.LookVector
+
+        local cespawnCFrame = CFrame.new(
+
+            humanoidRootPart.Position + (forward * 5),
+
+            humanoidRootPart.Position + (forward * 5) + forward
+
+        )
+
+        cespawnPart.CFrame = cespawnCFrame
+
+
+
+        local function createFolderPath(parent, path)
+
+            if not path or path == "" then return parent end
+
+            
+
+            local current = parent
+
+            for _, name in ipairs(string.split(path, ".")) do
+
+                local existing = current:FindFirstChild(name)
+
+                if not existing then
+
+                    local new = Instance.new("Attachment")
+
+                    new.Name = name
+
+                    new.Parent = current
+
+                    current = new
+
+                else
+
+                    current = existing
+
+                end
+
+            end
+
+            return current
+
+        end
+
+
+
+        local particles = {}
+
+    
+
+            do
+
+                local cespawnticle = Instance.new("ParticleEmitter")
+
+                local parent = cespawnPart
+
+        
+
+                parent = createFolderPath(cespawnPart, "Summon")
+
+                            cespawnticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cespawnticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                cespawnticle.LightInfluence = 0
+                cespawnticle.Lifetime = NumberRange.new(0.250000, 0.500000)
+                cespawnticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                cespawnticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                cespawnticle.LockedToPart = false
+                cespawnticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.465087, 0.000000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                cespawnticle.Orientation = Enum.ParticleOrientation.VelocityPerpendicular
+                cespawnticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.003922, 0.003922))})
+                cespawnticle.Drag = 13.25
+                cespawnticle.FlipbookStartRandom = false
+                cespawnticle.TimeScale = 1
+                cespawnticle.VelocitySpread = 360
+                cespawnticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cespawnticle.Speed = NumberRange.new(3.967500, 6.612500)
+                cespawnticle.Brightness = 15
+                cespawnticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.100000, 1.704070), NumberSequenceKeypoint.new(0.200000, 2.087061), NumberSequenceKeypoint.new(0.300000, 2.297031), NumberSequenceKeypoint.new(0.400000, 2.428064), NumberSequenceKeypoint.new(0.500000, 2.513885), NumberSequenceKeypoint.new(0.600000, 2.570677), NumberSequenceKeypoint.new(0.700000, 2.607488), NumberSequenceKeypoint.new(0.800000, 2.629890), NumberSequenceKeypoint.new(0.900000, 2.641549), NumberSequenceKeypoint.new(1.000000, 2.645000), NumberSequenceKeypoint.new(1.000000, 2.645000)})
+                cespawnticle.Enabled = false
+                cespawnticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cespawnticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                cespawnticle.ZOffset = 0
+                cespawnticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                cespawnticle.Rate = 25
+                cespawnticle.VelocityInheritance = 0
+                cespawnticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                cespawnticle.ShapePartial = 1
+                cespawnticle.Texture = "rbxassetid://17506544406"
+                cespawnticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                cespawnticle.EmissionDirection = Enum.NormalId.Front
+                cespawnticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cespawnticle.Shape = Enum.ParticleEmitterShape.Box
+                cespawnticle.LightEmission = -1
+
+
+                cespawnticle.Parent = parent
+
+                table.insert(particles, cespawnticle)
+
+            end
+
+        
+
+            do
+
+                local cespawnticle = Instance.new("ParticleEmitter")
+
+                local parent = cespawnPart
+
+        
+
+                parent = createFolderPath(cespawnPart, "Summon")
+
+                            cespawnticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cespawnticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                cespawnticle.LightInfluence = 0
+                cespawnticle.Lifetime = NumberRange.new(0.150000, 0.350000)
+                cespawnticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                cespawnticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                cespawnticle.LockedToPart = false
+                cespawnticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cespawnticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                cespawnticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.003922, 0.003922))})
+                cespawnticle.Drag = 13.25
+                cespawnticle.FlipbookStartRandom = false
+                cespawnticle.TimeScale = 1
+                cespawnticle.VelocitySpread = 360
+                cespawnticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cespawnticle.Speed = NumberRange.new(15.000000, 15.000000)
+                cespawnticle.Brightness = 15
+                cespawnticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.250000), NumberSequenceKeypoint.new(1.000000, 1.250000)})
+                cespawnticle.Enabled = false
+                cespawnticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cespawnticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                cespawnticle.ZOffset = 0
+                cespawnticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                cespawnticle.Rate = 12
+                cespawnticle.VelocityInheritance = 0
+                cespawnticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                cespawnticle.ShapePartial = 1
+                cespawnticle.Texture = "rbxassetid://17818516249"
+                cespawnticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                cespawnticle.EmissionDirection = Enum.NormalId.Front
+                cespawnticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cespawnticle.Shape = Enum.ParticleEmitterShape.Box
+                cespawnticle.LightEmission = -8
+
+
+                cespawnticle.Parent = parent
+
+                table.insert(particles, cespawnticle)
+
+            end
+
+        
+
+            do
+
+                local cespawnticle = Instance.new("ParticleEmitter")
+
+                local parent = cespawnPart
+
+        
+
+                parent = createFolderPath(cespawnPart, "Summon.Attachment")
+
+                            cespawnticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cespawnticle.FlipbookFramerate = NumberRange.new(64.000000, 64.000000)
+                cespawnticle.LightInfluence = 0
+                cespawnticle.Lifetime = NumberRange.new(0.250000, 0.250000)
+                cespawnticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                cespawnticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                cespawnticle.LockedToPart = true
+                cespawnticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.386707, 0.000000), NumberSequenceKeypoint.new(0.703242, 0.837500), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                cespawnticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                cespawnticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.003922, 0.003922))})
+                cespawnticle.Drag = 0
+                cespawnticle.FlipbookStartRandom = false
+                cespawnticle.TimeScale = 1
+                cespawnticle.VelocitySpread = 0
+                cespawnticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, -0.500000), NumberSequenceKeypoint.new(1.000000, -0.500000)})
+                cespawnticle.Speed = NumberRange.new(0.540202, 0.540202)
+                cespawnticle.Brightness = 15
+                cespawnticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.100000, 2.977155), NumberSequenceKeypoint.new(0.200000, 3.797153), NumberSequenceKeypoint.new(0.300000, 4.254033), NumberSequenceKeypoint.new(0.400000, 4.535970), NumberSequenceKeypoint.new(0.500000, 4.715758), NumberSequenceKeypoint.new(0.600000, 4.830880), NumberSequenceKeypoint.new(0.700000, 4.903852), NumberSequenceKeypoint.new(0.800000, 4.949641), NumberSequenceKeypoint.new(0.900000, 4.978971), NumberSequenceKeypoint.new(1.000000, 5.000000), NumberSequenceKeypoint.new(1.000000, 5.000000)})
+                cespawnticle.Enabled = false
+                cespawnticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cespawnticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                cespawnticle.ZOffset = 2
+                cespawnticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                cespawnticle.Rate = 21
+                cespawnticle.VelocityInheritance = 0
+                cespawnticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                cespawnticle.ShapePartial = 1
+                cespawnticle.Texture = "rbxassetid://18776170924"
+                cespawnticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                cespawnticle.EmissionDirection = Enum.NormalId.Top
+                cespawnticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cespawnticle.Shape = Enum.ParticleEmitterShape.Box
+                cespawnticle.LightEmission = 1
+
+
+                cespawnticle.Parent = parent
+
+                table.insert(particles, cespawnticle)
+
+            end
+
+        
+
+            do
+
+                local cespawnticle = Instance.new("ParticleEmitter")
+
+                local parent = cespawnPart
+
+        
+
+                parent = createFolderPath(cespawnPart, "Summon")
+
+                            cespawnticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cespawnticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                cespawnticle.LightInfluence = 0
+                cespawnticle.Lifetime = NumberRange.new(0.400000, 1.540000)
+                cespawnticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                cespawnticle.SpreadAngle = Vector2.new(-470.000000, 470.000000)
+                cespawnticle.LockedToPart = false
+                cespawnticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cespawnticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                cespawnticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.003922, 0.003922))})
+                cespawnticle.Drag = 6
+                cespawnticle.FlipbookStartRandom = false
+                cespawnticle.TimeScale = 1
+                cespawnticle.VelocitySpread = -470
+                cespawnticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cespawnticle.Speed = NumberRange.new(8.984375, 8.984375)
+                cespawnticle.Brightness = 5
+                cespawnticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.147132, 2.021485), NumberSequenceKeypoint.new(0.264339, 0.224609), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cespawnticle.Enabled = false
+                cespawnticle.Acceleration = Vector3.new(0.000000, 15.000000, 0.000000)
+                cespawnticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                cespawnticle.ZOffset = 1
+                cespawnticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Inward
+                cespawnticle.Rate = 45
+                cespawnticle.VelocityInheritance = 0
+                cespawnticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                cespawnticle.ShapePartial = 1
+                cespawnticle.Texture = "rbxassetid://18160864585"
+                cespawnticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                cespawnticle.EmissionDirection = Enum.NormalId.Bottom
+                cespawnticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cespawnticle.Shape = Enum.ParticleEmitterShape.Box
+                cespawnticle.LightEmission = -3
+
+
+                cespawnticle.Parent = parent
+
+                table.insert(particles, cespawnticle)
+
+            end
+
+        
+
+            do
+
+                local cespawnticle = Instance.new("ParticleEmitter")
+
+                local parent = cespawnPart
+
+        
+
+                parent = createFolderPath(cespawnPart, "Summon.Attachment")
+
+                            cespawnticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                cespawnticle.FlipbookFramerate = NumberRange.new(30.000000, 30.000000)
+                cespawnticle.LightInfluence = 0
+                cespawnticle.Lifetime = NumberRange.new(0.250000, 0.400000)
+                cespawnticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                cespawnticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                cespawnticle.LockedToPart = true
+                cespawnticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.131255, 0.093750), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                cespawnticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                cespawnticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.003922, 0.003922))})
+                cespawnticle.Drag = 0
+                cespawnticle.FlipbookStartRandom = false
+                cespawnticle.TimeScale = 0.5
+                cespawnticle.VelocitySpread = 360
+                cespawnticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                cespawnticle.Speed = NumberRange.new(0.010000, 0.010000)
+                cespawnticle.Brightness = 5
+                cespawnticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.100000, 1.786293), NumberSequenceKeypoint.new(0.200000, 2.278291), NumberSequenceKeypoint.new(0.300000, 2.552420), NumberSequenceKeypoint.new(0.400000, 2.721582), NumberSequenceKeypoint.new(0.500000, 2.829455), NumberSequenceKeypoint.new(0.600000, 2.898528), NumberSequenceKeypoint.new(0.700000, 2.942311), NumberSequenceKeypoint.new(0.800000, 2.969785), NumberSequenceKeypoint.new(0.900000, 2.987383), NumberSequenceKeypoint.new(1.000000, 3.000000), NumberSequenceKeypoint.new(1.000000, 3.000000)})
+                cespawnticle.Enabled = false
+                cespawnticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                cespawnticle.RotSpeed = NumberRange.new(-400.000000, -400.000000)
+                cespawnticle.ZOffset = 1
+                cespawnticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                cespawnticle.Rate = 5
+                cespawnticle.VelocityInheritance = 0
+                cespawnticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                cespawnticle.ShapePartial = 1
+                cespawnticle.Texture = "rbxassetid://18161493973"
+                cespawnticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                cespawnticle.EmissionDirection = Enum.NormalId.Top
+                cespawnticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                cespawnticle.Shape = Enum.ParticleEmitterShape.Box
+                cespawnticle.LightEmission = 0
+
+
+                cespawnticle.Parent = parent
+
+                table.insert(particles, cespawnticle)
+
+            end
+
+
+--cursedenergy
+
+        local ceticlePart = Instance.new("Part")
+        ceticlePart.Anchored = true
+        ceticlePart.Name = "Cursed Energy"
+        ceticlePart.CanCollide = false
+        ceticlePart.Transparency = 1
+        ceticlePart.Parent = foldercursedenergy
+
+        local forward = humanoidRootPart.CFrame.LookVector
+        local ceticleCFrame = CFrame.new(
+            humanoidRootPart.Position + (forward * 5),
+            humanoidRootPart.Position + (forward * 5) + forward
+        )
+        ceticlePart.CFrame = ceticleCFrame
+
+
+
+        local function createFolderPath(parent, path)
+
+            if not path or path == "" then return parent end
+
+            
+
+            local current = parent
+
+            for _, name in ipairs(string.split(path, ".")) do
+
+                local existing = current:FindFirstChild(name)
+
+                if not existing then
+
+                    local new = Instance.new("Attachment")
+
+                    new.Name = name
+
+                    new.Parent = current
+
+                    current = new
+
+                else
+
+                    current = existing
+
+                end
+
+            end
+
+            return current
+
+        end
+
+
+
+        local particles = {}
+
+    
+
+            do
+
+                local ceticle = Instance.new("ParticleEmitter")
+
+                local parent = ceticlePart
+
+        
+
+                parent = createFolderPath(ceticlePart, "1")
+
+                            ceticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ceticle.FlipbookFramerate = NumberRange.new(16.000000, 16.000000)
+                ceticle.LightInfluence = 0
+                ceticle.Lifetime = NumberRange.new(0.350000, 0.750000)
+                ceticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                ceticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                ceticle.LockedToPart = true
+                ceticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.115966, 0.000000), NumberSequenceKeypoint.new(0.778151, 0.000000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                ceticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                ceticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.000000, 0.000000, 0.000000))})
+                ceticle.Drag = 0
+                ceticle.FlipbookStartRandom = false
+                ceticle.TimeScale = 0.5
+                ceticle.VelocitySpread = 0
+                ceticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Speed = NumberRange.new(0.001004, 0.001004)
+                ceticle.Brightness = 25
+                ceticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.500000), NumberSequenceKeypoint.new(1.000000, 1.500000)})
+                ceticle.Enabled = true
+                ceticle.Acceleration = Vector3.new(0.000000, 15.000000, 0.000000)
+                ceticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ceticle.ZOffset = 0.6000000238418579
+                ceticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ceticle.Rate = 25
+                ceticle.VelocityInheritance = 0
+                ceticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                ceticle.ShapePartial = 1
+                ceticle.Texture = "http://www.roblox.com/asset/?id=16000323411"
+                ceticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                ceticle.EmissionDirection = Enum.NormalId.Top
+                ceticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ceticle.Shape = Enum.ParticleEmitterShape.Box
+                ceticle.LightEmission = 0.4000000059604645
+
+
+                ceticle.Parent = parent
+
+                table.insert(particles, ceticle)
+
+            end
+
+        
+
+            do
+
+                local ceticle = Instance.new("ParticleEmitter")
+
+                local parent = ceticlePart
+
+        
+
+                parent = createFolderPath(ceticlePart, "Attachment")
+
+                            ceticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ceticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                ceticle.LightInfluence = 0
+                ceticle.Lifetime = NumberRange.new(0.350000, 0.655000)
+                ceticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                ceticle.SpreadAngle = Vector2.new(45.000000, 45.000000)
+                ceticle.LockedToPart = true
+                ceticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Orientation = Enum.ParticleOrientation.VelocityParallel
+                ceticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.000000, 0.000000, 0.000000))})
+                ceticle.Drag = 10
+                ceticle.FlipbookStartRandom = false
+                ceticle.TimeScale = 1
+                ceticle.VelocitySpread = 45
+                ceticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                ceticle.Speed = NumberRange.new(4.018000, 16.000000)
+                ceticle.Brightness = 20
+                ceticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.172123, 0.000000), NumberSequenceKeypoint.new(0.349860, 0.125553), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Enabled = false
+                ceticle.Acceleration = Vector3.new(0.000000, 10.044280, 0.000000)
+                ceticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ceticle.ZOffset = 0.5
+                ceticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ceticle.Rate = 125
+                ceticle.VelocityInheritance = 0
+                ceticle.Rotation = NumberRange.new(90.000000, 90.000000)
+                ceticle.ShapePartial = 1
+                ceticle.Texture = "http://www.roblox.com/asset/?id=14934409147"
+                ceticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                ceticle.EmissionDirection = Enum.NormalId.Top
+                ceticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ceticle.Shape = Enum.ParticleEmitterShape.Box
+                ceticle.LightEmission = 0
+
+
+                ceticle.Parent = parent
+
+                table.insert(particles, ceticle)
+
+            end
+
+        
+
+            do
+
+                local ceticle = Instance.new("ParticleEmitter")
+
+                local parent = ceticlePart
+
+                        ceticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ceticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                ceticle.LightInfluence = 0
+                ceticle.Lifetime = NumberRange.new(0.600000, 1.000000)
+                ceticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                ceticle.SpreadAngle = Vector2.new(70.000000, 70.000000)
+                ceticle.LockedToPart = false
+                ceticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                ceticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(0.000000, 0.000000, 0.000000)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.000000, 0.000000, 0.000000))})
+                ceticle.Drag = 10
+                ceticle.FlipbookStartRandom = false
+                ceticle.TimeScale = 1
+                ceticle.VelocitySpread = 70
+                ceticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Speed = NumberRange.new(4.017712, 7.279939)
+                ceticle.Brightness = 20
+                ceticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.298097, 0.078146), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Enabled = true
+                ceticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ceticle.RotSpeed = NumberRange.new(-500.000000, 250.000000)
+                ceticle.ZOffset = 0
+                ceticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ceticle.Rate = 50
+                ceticle.VelocityInheritance = 0
+                ceticle.Rotation = NumberRange.new(0.000000, 360.000000)
+                ceticle.ShapePartial = 1
+                ceticle.Texture = "http://www.roblox.com/asset/?id=14934411261"
+                ceticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                ceticle.EmissionDirection = Enum.NormalId.Top
+                ceticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ceticle.Shape = Enum.ParticleEmitterShape.Box
+                ceticle.LightEmission = 0
+
+
+                ceticle.Parent = parent
+
+                table.insert(particles, ceticle)
+
+            end
+
+        
+
+            do
+
+                local ceticle = Instance.new("ParticleEmitter")
+
+                local parent = ceticlePart
+
+                        ceticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ceticle.FlipbookFramerate = NumberRange.new(30.000000, 30.000000)
+                ceticle.LightInfluence = 0
+                ceticle.Lifetime = NumberRange.new(0.350000, 0.750000)
+                ceticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid8x8
+                ceticle.SpreadAngle = Vector2.new(360.000000, 360.000000)
+                ceticle.LockedToPart = false
+                ceticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.119335, 0.093750), NumberSequenceKeypoint.new(0.471299, 0.243750), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                ceticle.Orientation = Enum.ParticleOrientation.VelocityParallel
+                ceticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.003922, 0.003922))})
+                ceticle.Drag = 5
+                ceticle.FlipbookStartRandom = false
+                ceticle.TimeScale = 1
+                ceticle.VelocitySpread = 360
+                ceticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, -0.800000), NumberSequenceKeypoint.new(1.000000, -0.800000)})
+                ceticle.Speed = NumberRange.new(0.000000, 3.000000)
+                ceticle.Brightness = 1
+                ceticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.500000), NumberSequenceKeypoint.new(1.000000, 0.500000)})
+                ceticle.Enabled = true
+                ceticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ceticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ceticle.ZOffset = 0.44999998807907104
+                ceticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ceticle.Rate = 35
+                ceticle.VelocityInheritance = 0
+                ceticle.Rotation = NumberRange.new(90.000000, 90.000000)
+                ceticle.ShapePartial = 1
+                ceticle.Texture = "http://www.roblox.com/asset/?id=14759305760"
+                ceticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                ceticle.EmissionDirection = Enum.NormalId.Front
+                ceticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ceticle.Shape = Enum.ParticleEmitterShape.Box
+                ceticle.LightEmission = -2
+
+
+                ceticle.Parent = parent
+
+                table.insert(particles, ceticle)
+
+            end
+
+        
+
+            do
+
+                local ceticle = Instance.new("ParticleEmitter")
+
+                local parent = ceticlePart
+
+                        ceticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ceticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                ceticle.LightInfluence = 0
+                ceticle.Lifetime = NumberRange.new(0.600000, 1.000000)
+                ceticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                ceticle.SpreadAngle = Vector2.new(70.000000, 70.000000)
+                ceticle.LockedToPart = false
+                ceticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                ceticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.003922, 0.003922))})
+                ceticle.Drag = 10
+                ceticle.FlipbookStartRandom = false
+                ceticle.TimeScale = 1
+                ceticle.VelocitySpread = 70
+                ceticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Speed = NumberRange.new(4.017712, 7.279939)
+                ceticle.Brightness = 1
+                ceticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(0.298097, 0.078146), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Enabled = true
+                ceticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ceticle.RotSpeed = NumberRange.new(-500.000000, 250.000000)
+                ceticle.ZOffset = 0
+                ceticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ceticle.Rate = 50
+                ceticle.VelocityInheritance = 0
+                ceticle.Rotation = NumberRange.new(0.000000, 360.000000)
+                ceticle.ShapePartial = 1
+                ceticle.Texture = "http://www.roblox.com/asset/?id=14934411261"
+                ceticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                ceticle.EmissionDirection = Enum.NormalId.Top
+                ceticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ceticle.Shape = Enum.ParticleEmitterShape.Box
+                ceticle.LightEmission = -2
+
+
+                ceticle.Parent = parent
+
+                table.insert(particles, ceticle)
+
+            end
+
+        
+
+            do
+
+                local ceticle = Instance.new("ParticleEmitter")
+
+                local parent = ceticlePart
+
+        
+
+                parent = createFolderPath(ceticlePart, "Attachment")
+
+                            ceticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ceticle.FlipbookFramerate = NumberRange.new(24.000000, 24.000000)
+                ceticle.LightInfluence = 0
+                ceticle.Lifetime = NumberRange.new(0.700000, 0.700000)
+                ceticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                ceticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                ceticle.LockedToPart = true
+                ceticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Orientation = Enum.ParticleOrientation.FacingCameraWorldUp
+                ceticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.003922, 0.003922))})
+                ceticle.Drag = 0
+                ceticle.FlipbookStartRandom = false
+                ceticle.TimeScale = 1
+                ceticle.VelocitySpread = 0
+                ceticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Speed = NumberRange.new(0.001004, 0.001004)
+                ceticle.Brightness = 5
+                ceticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 2.000000), NumberSequenceKeypoint.new(1.000000, 2.000000)})
+                ceticle.Enabled = true
+                ceticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ceticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ceticle.ZOffset = 2.1500000953674316
+                ceticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ceticle.Rate = 2
+                ceticle.VelocityInheritance = 0
+                ceticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                ceticle.ShapePartial = 1
+                ceticle.Texture = "rbxassetid://16671283561"
+                ceticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                ceticle.EmissionDirection = Enum.NormalId.Top
+                ceticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ceticle.Shape = Enum.ParticleEmitterShape.Box
+                ceticle.LightEmission = -1
+
+
+                ceticle.Parent = parent
+
+                table.insert(particles, ceticle)
+
+            end
+
+        
+
+            do
+
+                local ceticle = Instance.new("ParticleEmitter")
+
+                local parent = ceticlePart
+
+        
+
+                parent = createFolderPath(ceticlePart, "1")
+
+                            ceticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ceticle.FlipbookFramerate = NumberRange.new(16.000000, 16.000000)
+                ceticle.LightInfluence = 0
+                ceticle.Lifetime = NumberRange.new(1.000000, 1.000000)
+                ceticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                ceticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                ceticle.LockedToPart = true
+                ceticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.115966, 0.000000), NumberSequenceKeypoint.new(0.778151, 0.000000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                ceticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                ceticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.003922, 0.003922))})
+                ceticle.Drag = 0
+                ceticle.FlipbookStartRandom = false
+                ceticle.TimeScale = 0.5
+                ceticle.VelocitySpread = 0
+                ceticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Speed = NumberRange.new(0.001004, 0.001004)
+                ceticle.Brightness = 5
+                ceticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.450000), NumberSequenceKeypoint.new(1.000000, 1.450000)})
+                ceticle.Enabled = true
+                ceticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ceticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ceticle.ZOffset = 0.699999988079071
+                ceticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ceticle.Rate = 5
+                ceticle.VelocityInheritance = 0
+                ceticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                ceticle.ShapePartial = 1
+                ceticle.Texture = "http://www.roblox.com/asset/?id=16000332360"
+                ceticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                ceticle.EmissionDirection = Enum.NormalId.Top
+                ceticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ceticle.Shape = Enum.ParticleEmitterShape.Box
+                ceticle.LightEmission = -5
+
+
+                ceticle.Parent = parent
+
+                table.insert(particles, ceticle)
+
+            end
+
+        
+
+            do
+
+                local ceticle = Instance.new("ParticleEmitter")
+
+                local parent = ceticlePart
+
+        
+
+                parent = createFolderPath(ceticlePart, "1")
+
+                            ceticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ceticle.FlipbookFramerate = NumberRange.new(1.000000, 1.000000)
+                ceticle.LightInfluence = 0
+                ceticle.Lifetime = NumberRange.new(0.350000, 0.655000)
+                ceticle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid4x4
+                ceticle.SpreadAngle = Vector2.new(360.000000, -360.000000)
+                ceticle.LockedToPart = true
+                ceticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.159601, 0.000000), NumberSequenceKeypoint.new(0.350374, 0.000000), NumberSequenceKeypoint.new(0.571072, 0.000000), NumberSequenceKeypoint.new(0.754364, 0.787500), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                ceticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                ceticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(0.403114, Color3.new(0.013841, 0.000054, 0.000054)), ColorSequenceKeypoint.new(1.000000, Color3.new(0.000000, 0.000000, 0.000000))})
+                ceticle.Drag = 5
+                ceticle.FlipbookStartRandom = false
+                ceticle.TimeScale = 1
+                ceticle.VelocitySpread = 360
+                ceticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Speed = NumberRange.new(2.008856, 6.026568)
+                ceticle.Brightness = 25
+                ceticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                ceticle.Enabled = true
+                ceticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ceticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ceticle.ZOffset = 0
+                ceticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ceticle.Rate = 125
+                ceticle.VelocityInheritance = 0
+                ceticle.Rotation = NumberRange.new(-360.000000, 360.000000)
+                ceticle.ShapePartial = 1
+                ceticle.Texture = "http://www.roblox.com/asset/?id=15105291110"
+                ceticle.FlipbookMode = Enum.ParticleFlipbookMode.OneShot
+                ceticle.EmissionDirection = Enum.NormalId.Top
+                ceticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ceticle.Shape = Enum.ParticleEmitterShape.Box
+                ceticle.LightEmission = 0
+
+
+                ceticle.Parent = parent
+
+                table.insert(particles, ceticle)
+
+            end
+
+        
+
+            do
+
+                local ceticle = Instance.new("ParticleEmitter")
+
+                local parent = ceticlePart
+
+                        ceticle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+                ceticle.FlipbookFramerate = NumberRange.new(0.000000, 0.000000)
+                ceticle.LightInfluence = 0
+                ceticle.Lifetime = NumberRange.new(0.550000, 1.000000)
+                ceticle.FlipbookLayout = Enum.ParticleFlipbookLayout.None
+                ceticle.SpreadAngle = Vector2.new(0.000000, 0.000000)
+                ceticle.LockedToPart = true
+                ceticle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.000000), NumberSequenceKeypoint.new(0.151261, 0.937500), NumberSequenceKeypoint.new(1.000000, 1.000000)})
+                ceticle.Orientation = Enum.ParticleOrientation.FacingCamera
+                ceticle.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000000, Color3.new(1.000000, 0.003922, 0.003922)), ColorSequenceKeypoint.new(1.000000, Color3.new(1.000000, 0.003922, 0.003922))})
+                ceticle.Drag = 0
+                ceticle.FlipbookStartRandom = true
+                ceticle.TimeScale = 0.5
+                ceticle.VelocitySpread = 0
+                ceticle.Squash = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 0.000000), NumberSequenceKeypoint.new(1.000000, 0.000000)})
+                ceticle.Speed = NumberRange.new(0.000562, 0.000562)
+                ceticle.Brightness = 5
+                ceticle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0.000000, 1.500000), NumberSequenceKeypoint.new(1.000000, 1.500000)})
+                ceticle.Enabled = true
+                ceticle.Acceleration = Vector3.new(0.000000, 0.000000, 0.000000)
+                ceticle.RotSpeed = NumberRange.new(0.000000, 0.000000)
+                ceticle.ZOffset = 0.3499999940395355
+                ceticle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+                ceticle.Rate = 15
+                ceticle.VelocityInheritance = 0
+                ceticle.Rotation = NumberRange.new(0.000000, 0.000000)
+                ceticle.ShapePartial = 1
+                ceticle.Texture = "rbxassetid://12160798454"
+                ceticle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+                ceticle.EmissionDirection = Enum.NormalId.Top
+                ceticle.FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks."
+                ceticle.Shape = Enum.ParticleEmitterShape.Box
+                ceticle.LightEmission = -1
+
+
+                ceticle.Parent = parent
+
+                table.insert(particles, ceticle)
+
+            end
+
+        
+
