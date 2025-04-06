@@ -353,6 +353,7 @@ ragdisfectPart.Parent = folderraging
         distextPart.Anchored = true
         distextPart.CanCollide = false
         distextPart.Transparency = 1
+        distextPart.Size = Vector3.new(0.1, 0.1, 0.1)
         distextPart.Parent = folderraging
 
         local forward = humanoidRootPart.CFrame.LookVector
@@ -730,6 +731,7 @@ end
         cletextPart.Anchored = true
         cletextPart.CanCollide = false
         cletextPart.Transparency = 1
+        cletextPart.Size = Vector3.new(0.1, 0.1, 0.1)
         cletextPart.Parent = foldercleave
 
         local forward = humanoidRootPart.CFrame.LookVector
@@ -818,7 +820,7 @@ end
         mIlastfectPart.Anchored = true
         mIlastfectPart.CanCollide = false
         mIlastfectPart.Transparency = 1
-        mIlastfectPart.Size = Vector3.new(1, 1, 1)
+        mIlastfectPart.Size = Vector3.new(0.1, 0.1, 0.1)
         mIlastfectPart.Parent = folderm1
 
         local forward = humanoidRootPart.CFrame.LookVector
